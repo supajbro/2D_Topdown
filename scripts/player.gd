@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+@export var speed: float = 50
 
 func _physics_process(delta: float) -> void:
 
-# Control movement
+	# Control movement
 	velocity = Vector2.ZERO
 	if Input.is_action_pressed("MoveRight"):
 		velocity.x += 1
@@ -15,5 +15,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("MoveUp"):
 		velocity.y -= 1
 
-	velocity = velocity.normalized() * SPEED
+	velocity = velocity.normalized() * speed
 	move_and_slide()
+	
+	if Input.is_action_pressed("Shoot"):
+		shoot()
+	
+func shoot():
+	print("Shoot")
