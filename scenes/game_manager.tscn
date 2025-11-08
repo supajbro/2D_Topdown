@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://xa3dywrdag0p"]
+
+[ext_resource type="Script" uid="uid://bgxfren16tect" path="res://scripts/game_manager.gd" id="1_hwd4i"]
+[ext_resource type="PackedScene" uid="uid://7g6jyfqmarua" path="res://scenes/player.tscn" id="2_glms7"]
+[ext_resource type="PackedScene" uid="uid://c6rneeeyyu176" path="res://scenes/player_camera.tscn" id="3_udu3i"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_hwd4i")
+player_scene = ExtResource("2_glms7")
+camera_scene = ExtResource("3_udu3i")
