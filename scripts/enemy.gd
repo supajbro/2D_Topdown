@@ -19,6 +19,7 @@ func init(spawned_player: Node2D):
 func _ready():
 	add_to_group("enemy")
 	player_ref = player
+	current_health = max_health
 	
 func _physics_process(delta):
 	match current_state:
@@ -81,7 +82,11 @@ func _change_state(new_state: String):
 # -------------------------
 
 func damage(damage: float):
-	print("Enemy was hit")
 	if(current_health <= 0):
 		return
+		
 	current_health = max(0, current_health - damage)
+	print(current_health)
+	
+	if(current_health <= 0):
+		queue_free()
