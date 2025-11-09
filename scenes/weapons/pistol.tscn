@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgb4kqj75yt0o"]
+
+[ext_resource type="Script" uid="uid://bmh5icywv6dpu" path="res://scripts/gun.gd" id="1_r3071"]
+[ext_resource type="PackedScene" uid="uid://wnmhkvkqnq5d" path="res://scenes/weapons/pistol_bullet.tscn" id="2_60a84"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_46jcc"]
+
+[node name="pistol" type="Node2D"]
+script = ExtResource("1_r3071")
+bullet_scene = ExtResource("2_60a84")
+fire_rate = 0.75
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_46jcc")

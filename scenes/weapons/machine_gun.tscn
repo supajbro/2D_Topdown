@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://7jpj757l16ak"]
+
+[ext_resource type="Script" uid="uid://bmh5icywv6dpu" path="res://scripts/gun.gd" id="1_6vd8m"]
+[ext_resource type="PackedScene" uid="uid://c1rdqq4res3nn" path="res://scenes/weapons/machine_gun_bullet.tscn" id="2_6vd8m"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_46jcc"]
+
+[node name="machine_gun" type="Node2D"]
+script = ExtResource("1_6vd8m")
+bullet_scene = ExtResource("2_6vd8m")
+fire_rate = 0.05
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_46jcc")

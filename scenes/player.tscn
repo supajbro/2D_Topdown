@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://f1p73trn6io0" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://cpl8kgd3nj4nj" path="res://assets/temp/character/idle.png" id="2_g2els"]
-[ext_resource type="PackedScene" uid="uid://dgb4kqj75yt0o" path="res://scenes/pistol.tscn" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://7jpj757l16ak" path="res://scenes/machine_gun.tscn" id="3_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://dgjq6vbik7oel" path="res://scenes/shotgun.tscn" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://dgb4kqj75yt0o" path="res://scenes/weapons/pistol.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://7jpj757l16ak" path="res://scenes/weapons/machine_gun.tscn" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dgjq6vbik7oel" path="res://scenes/weapons/shotgun.tscn" id="4_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 
@@ -114,6 +114,6 @@ shape = SubResource("RectangleShape2D_g2els")
 sprite_frames = SubResource("SpriteFrames_oprun")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.092394054
+frame_progress = 0.29672205
 
 [connection signal="ready" from="." to="." method="_on_ready"]
