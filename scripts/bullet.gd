@@ -1,7 +1,8 @@
 class_name bullet
 extends Area2D
 
-var direction: Vector2 = Vector2.ZERO
+@export var is_enemy_bullet: bool = false
+
 @export var speed: float = 100
 @export var damage: float = 10
 
@@ -11,9 +12,15 @@ var destroyed: bool = false
 
 var targets_hit: int
 @export var max_targets_hit: float = 1
+
+var direction: Vector2 = Vector2.ZERO
 	
 func _ready():
-	direction = (get_global_mouse_position() - global_position).normalized()
+	if(is_enemy_bullet):
+		direction = (Global.player.global_position - global_position).normalized()
+	else:
+		direction = (get_global_mouse_position() - global_position).normalized()
+		
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _process(delta: float) -> void:
@@ -26,6 +33,19 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 func _on_body_entered(body):
+	if(is_enemy_bullet):
+		if body.is_in_group("player"):
+			targets_hit += 1
+			print("Hit player")
+			if body.has_method("damage"):
+				body.damage(damage)
+		
+		# Destroy bullet after the bullet has hit the max amount of targets
+		if (targets_hit >= max_targets_hit):
+			queue_free()
+		return
+		
+	
 	if body.is_in_group("enemy"):
 		targets_hit += 1
 		if body.has_method("damage"):

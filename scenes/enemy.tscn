@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://du7wxjxn5m3i"]
+[gd_scene load_steps=18 format=3 uid="uid://du7wxjxn5m3i"]
 
 [ext_resource type="Script" uid="uid://6mehdm5r4mx4" path="res://scripts/enemy.gd" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://cje2jxjsuqoh7" path="res://scenes/weapons/enemies/enemy_pistol.tscn" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://cpl8kgd3nj4nj" path="res://assets/temp/character/idle.png" id="5_ipns3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
@@ -102,6 +103,9 @@ collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_md0e3")
 speed = 25.0
+detection_range = 500.0
+attack_range = 80.0
+pistol_scene = ExtResource("2_4ra3w")
 
 [node name="enemy_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")

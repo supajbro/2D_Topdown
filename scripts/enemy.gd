@@ -11,15 +11,22 @@ var current_health: float
 
 var current_state: String = "idle"
 var player_ref: Node2D
-var player: Node2D
 
-func init(spawned_player: Node2D):
-	player = spawned_player
+@export var enemy_type: String = "shooting"
+
+@export var pistol_scene: PackedScene
+var pistol_instance: gun = null
 
 func _ready():
 	add_to_group("enemy")
-	player_ref = player
+	player_ref = Global.player
 	current_health = max_health
+	
+	match enemy_type:
+		"shooting":
+			pistol_instance = pistol_scene.instantiate()
+			pistol_instance.position = global_position
+			add_child(pistol_instance)
 	
 func _physics_process(delta):
 	match current_state:
@@ -57,7 +64,9 @@ func _attack_state(delta):
 	move_and_slide()
 	
 	# Example attack logic
-	print("Enemy attacks!")
+	match enemy_type:
+		"shooting":
+			pistol_instance.shoot(global_position)
 	
 	# After attacking, either chase again or idle
 	if _distance_to_player() > attack_range:
@@ -86,7 +95,6 @@ func damage(damage: float):
 		return
 		
 	current_health = max(0, current_health - damage)
-	print(current_health)
 	
 	if(current_health <= 0):
 		queue_free()

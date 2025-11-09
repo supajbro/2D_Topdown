@@ -22,6 +22,7 @@ func spawn_player():
 		player_instance = player_scene.instantiate()
 		player_instance.position = spawn_pos
 		add_child(player_instance)
+		Global.player = player_instance
 	else:
 		push_error("No player scene assigned to the game manager")
 		
@@ -41,7 +42,6 @@ func spawn_enemy():
 		# Handle spawning enemy
 		enemy_instance = enemy_scene.instantiate()
 		enemy_instance.position = Vector2(100, 100)
-		enemy_instance.init(player_instance)
 		add_child(enemy_instance)
 	else:
 		push_error("No enemy scene assigned to the game manager")

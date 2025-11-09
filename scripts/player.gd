@@ -15,7 +15,15 @@ var shotgun_instance: gun = null
 # the active weapon the player is using
 var selected_weapon: gun = null
 
+# Health
+var current_health: float
+@export var max_health: float = 100
+
 func _on_ready() -> void:
+	add_to_group("player")
+	
+	current_health = max_health
+	
 	pistol_instance = pistol_scene.instantiate()
 	pistol_instance.position = global_position
 	add_child(pistol_instance)
@@ -48,7 +56,11 @@ func _physics_process(delta: float) -> void:
 	# Handle gun controls
 	switch_weapon()
 	shoot(delta)
-	
+
+# -------------------------
+# WEAPON FUNCTIONS
+# -------------------------
+
 func shoot(delta: float):
 	if Input.is_action_pressed("Shoot"):
 		if selected_weapon:
@@ -63,3 +75,17 @@ func switch_weapon():
 		selected_weapon = machine_gun_instance
 	elif Input.is_action_pressed("slot_three"):
 		selected_weapon = shotgun_instance
+
+# -------------------------
+# HEALTH FUNCTIONS
+# -------------------------
+
+func damage(damage: float):
+	if(current_health <= 0):
+		return
+		
+	current_health = max(0, current_health - damage)
+	print(current_health)
+	
+	if(current_health <= 0):
+		print("Player is dead")
