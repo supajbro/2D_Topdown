@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cna041jnqbbwy"]
+
+[ext_resource type="Script" uid="uid://dt4708edimwno" path="res://scripts/enemy_spawner.gd" id="1_ks1gq"]
+[ext_resource type="PackedScene" uid="uid://du7wxjxn5m3i" path="res://scenes/enemy.tscn" id="2_devoi"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_ks1gq")
+max_enemies_spawned = 50
+enemies_shooting_scene = ExtResource("2_devoi")

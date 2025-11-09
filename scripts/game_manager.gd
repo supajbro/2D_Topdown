@@ -14,7 +14,6 @@ var enemy_instance: enemy = null
 func _ready():
 	spawn_player()
 	spawn_player_camera()
-	spawn_enemy()
 
 func spawn_player():
 	if (player_scene):
@@ -36,12 +35,3 @@ func spawn_player_camera():
 		add_child(camera_instance)
 	else:
 		push_error("No camera scene assigned to the game manager")	
-		
-func spawn_enemy():
-	if (enemy_scene):
-		# Handle spawning enemy
-		enemy_instance = enemy_scene.instantiate()
-		enemy_instance.position = Vector2(100, 100)
-		add_child(enemy_instance)
-	else:
-		push_error("No enemy scene assigned to the game manager")

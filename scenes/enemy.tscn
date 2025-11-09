@@ -100,10 +100,10 @@ animations = [{
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_md0e3")
 speed = 25.0
-detection_range = 500.0
+detection_range = 1000.0
 attack_range = 80.0
 pistol_scene = ExtResource("2_4ra3w")
 
