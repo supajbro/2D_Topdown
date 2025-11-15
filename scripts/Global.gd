@@ -8,3 +8,11 @@ enum Enemy_Types
 	EXPLODING,
 	INVALID_TYPE
 }
+
+# Global RNG for this script
+var rng := RandomNumberGenerator.new()
+
+func _ready():
+	rng.seed = randi() % 1000000000  # 0 to 999,999,999
+	rng.randomize()
+	print(rng.seed)

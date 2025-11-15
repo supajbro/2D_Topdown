@@ -9,3 +9,4 @@ script = ExtResource("1_ks1gq")
 max_enemies_spawned = 50
 enemies_shooting_scene = ExtResource("2_xl0gr")
 enemies_exploding_scene = ExtResource("3_ih16b")
+spawn_test_enemies = true
