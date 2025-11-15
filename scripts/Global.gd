@@ -1,6 +1,7 @@
 extends Node
 
 var player: player = null
+var cam: player_camera = null
 
 enum Enemy_Types
 {
@@ -16,3 +17,8 @@ func _ready():
 	rng.seed = randi() % 1000000000  # 0 to 999,999,999
 	rng.randomize()
 	print(rng.seed)
+	
+func GetCamera() -> player_camera:
+	if(cam == null):
+		push_error("Missing ref to camera")
+	return cam

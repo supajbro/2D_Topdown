@@ -10,3 +10,5 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("1_7pa0d")
+shake_frequency = 1.0
+mini_shake = 15.0

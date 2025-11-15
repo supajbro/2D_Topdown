@@ -18,7 +18,7 @@ var test_enemy_list: Array
 func _ready():
 	# Initialise the lists of enemies
 	enemy_list 			= [enemies_shooting_scene, enemies_exploding_scene]
-	test_enemy_list 	= [enemies_exploding_scene]
+	test_enemy_list 	= [enemies_shooting_scene]
 	
 	var _list = test_enemy_list if spawn_test_enemies else enemy_list
 	for i in range(max_enemies_spawned):

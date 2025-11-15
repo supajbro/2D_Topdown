@@ -87,5 +87,7 @@ func damage(damage: float):
 	current_health = max(0, current_health - damage)
 	print(current_health)
 	
+	Global.GetCamera().apply_shake(Global.GetCamera().mini_shake)
+	
 	if(current_health <= 0):
 		print("Player is dead")
