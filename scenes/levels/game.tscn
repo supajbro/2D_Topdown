@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwv7g86kpr7ia"]
+[gd_scene load_steps=7 format=3 uid="uid://cwv7g86kpr7ia"]
 
 [ext_resource type="PackedScene" uid="uid://xa3dywrdag0p" path="res://scenes/game_manager.tscn" id="1_61jgc"]
 [ext_resource type="Texture2D" uid="uid://dqhkrtmoq1kon" path="res://assets/temp/terrain_tiles_v2.png" id="2_riktp"]
 [ext_resource type="PackedScene" uid="uid://cna041jnqbbwy" path="res://scenes/enemy_spawner.tscn" id="3_a1osm"]
+[ext_resource type="PackedScene" uid="uid://bc28i6v0554kf" path="res://scenes/enemy_shooting.tscn" id="4_a1osm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_riktp")
@@ -624,6 +625,7 @@ layer_0/tile_data = PackedInt32Array(-1, 65536, 1, 65535, 65536, 1, -65536, 0, 7
 [node name="EnemyTests" type="Node" parent="."]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_a1osm")]
+enemies_shooting_scene = ExtResource("4_a1osm")
 
 [node name="enemy_spawn" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
 position = Vector2(-118, -36)

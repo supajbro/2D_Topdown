@@ -1,4 +1,4 @@
-class_name enemy
+class_name enemy_base
 extends CharacterBody2D
 
 @export var speed: float = 100
@@ -21,12 +21,6 @@ func _ready():
 	add_to_group("enemy")
 	player_ref = Global.player
 	current_health = max_health
-	
-	match enemy_type:
-		"shooting":
-			pistol_instance = pistol_scene.instantiate()
-			pistol_instance.position = global_position
-			add_child(pistol_instance)
 	
 func _physics_process(delta):
 	match current_state:
@@ -60,14 +54,6 @@ func _chase_state(delta):
 		_change_state("idle")
 
 func _attack_state(delta):
-	velocity = Vector2.ZERO
-	move_and_slide()
-	
-	# Example attack logic
-	match enemy_type:
-		"shooting":
-			pistol_instance.shoot(global_position)
-	
 	# After attacking, either chase again or idle
 	if _distance_to_player() > attack_range:
 		_change_state("chase")

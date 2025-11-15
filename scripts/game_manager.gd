@@ -8,9 +8,6 @@ var player_instance: Node = null
 @export var camera_scene: PackedScene
 var camera_instance: player_camera = null
 
-@export var enemy_scene: PackedScene
-var enemy_instance: enemy = null
-
 func _ready():
 	spawn_player()
 	spawn_player_camera()
