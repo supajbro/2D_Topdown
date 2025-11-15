@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://gblwrgns653e"]
+
+[ext_resource type="Script" uid="uid://bo5kpva8kkkm4" path="res://scripts/explosion.gd" id="1_14vij"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mkf8s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6uc2"]
+
+[node name="explosion" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_14vij")
+is_enemy_explosion = true
+scale_speed = 1.25
+target_scale = Vector2(10, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = SubResource("CanvasTexture_mkf8s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r6uc2")

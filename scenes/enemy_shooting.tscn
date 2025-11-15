@@ -102,10 +102,10 @@ animations = [{
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_hofrk")
+pistol_scene = ExtResource("2_6kja6")
 speed = 25.0
 detection_range = 1000.0
 attack_range = 80.0
-pistol_scene = ExtResource("2_6kja6")
 
 [node name="enemy_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g2els")

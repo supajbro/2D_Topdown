@@ -12,10 +12,7 @@ var current_health: float
 var current_state: String = "idle"
 var player_ref: Node2D
 
-@export var enemy_type: String = "shooting"
-
-@export var pistol_scene: PackedScene
-var pistol_instance: gun = null
+@export var enemy_type: Global.Enemy_Types
 
 func _ready():
 	add_to_group("enemy")
