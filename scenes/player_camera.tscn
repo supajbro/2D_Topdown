@@ -8,5 +8,6 @@ drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("1_7pa0d")
+shake_decay = 25.0
 shake_power_pistol = 20.0
-shake_power_shotgun = 25.0
+shake_power_shotgun = 8.333

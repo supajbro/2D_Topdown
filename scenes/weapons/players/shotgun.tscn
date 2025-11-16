@@ -1,15 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgjq6vbik7oel"]
 
-[ext_resource type="Script" uid="uid://bmh5icywv6dpu" path="res://scripts/gun.gd" id="1_0frcf"]
+[ext_resource type="Script" uid="uid://ebs86crh1kuw" path="res://scripts/shotgun.gd" id="1_d1tph"]
 [ext_resource type="PackedScene" uid="uid://cw36qho322p70" path="res://scenes/weapons/players/shotgun_bullet.tscn" id="2_0frcf"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_46jcc"]
 
 [node name="shotgun" type="Node2D"]
-script = ExtResource("1_0frcf")
+script = ExtResource("1_d1tph")
 gun_type = 2
 bullet_scene = ExtResource("2_0frcf")
-fire_rate = 1.0
+fire_rate = 1.5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CanvasTexture_46jcc")
+
+[node name="Spawn_Left" type="Node2D" parent="."]
+position = Vector2(0, -10)
+
+[node name="Spawn_Middle" type="Node2D" parent="."]
+
+[node name="Spawn_Right" type="Node2D" parent="."]
+position = Vector2(0, 10)

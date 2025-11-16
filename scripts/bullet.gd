@@ -21,7 +21,7 @@ func _ready():
 		direction = (Global.player.global_position - global_position).normalized()
 	else:
 		direction = (get_global_mouse_position() - global_position).normalized()
-		Global.GetCamera().add_shake(direction, gun_type)
+		Global.GetCamera().add_shake(-direction, gun_type)
 		
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
