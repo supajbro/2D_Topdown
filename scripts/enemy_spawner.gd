@@ -34,14 +34,34 @@ func _ready():
 	
 	var _list = test_enemy_list if spawn_test_enemies else enemy_list
 	spawn_enemy(_list)
-	
+
+# -------------------------
+# UPDATE FUNCTIONS
+# -------------------------
+
 func _process(delta: float) -> void:
+	#spawning_individual_enemies_update(delta)
+	spawning_group_enemies_update(delta)
+
+# spawns enemies over a set time when there is less than max enemies
+func spawning_individual_enemies_update(delta: float) -> void:
 	if(current_enemies_spawned >= max_enemies_spawned):
 		return
 	current_spawn_delay += delta
 	var _list = test_enemy_list if spawn_test_enemies else enemy_list
 	if(current_spawn_delay >= spawn_delay):
 		spawn_individual_enemy(_list)
+
+# spawns all enemies again
+func spawning_group_enemies_update(delta: float) -> void:
+	if(current_enemies_spawned > 0):
+		return
+	var _list = test_enemy_list if spawn_test_enemies else enemy_list
+	spawn_enemy(_list)
+		
+# -------------------------
+# SPAWNING FUNCTIONS
+# -------------------------
 
 func spawn_enemy(enemies: Array):
 	max_enemies_spawned = spawn_points.size()

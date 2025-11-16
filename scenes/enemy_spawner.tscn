@@ -11,3 +11,4 @@ enemies_shooting_scene = ExtResource("2_xl0gr")
 enemies_exploding_scene = ExtResource("3_ih16b")
 min_spawn_delay = 0.5
 max_spawn_delay = 2.5
+spawn_test_enemies = null
