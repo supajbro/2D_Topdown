@@ -10,6 +10,14 @@ enum Enemy_Types
 	INVALID_TYPE
 }
 
+enum Gun_Types
+{
+	PISTOL = 0,
+	MACHINE_GUN,
+	SHOTGUN,
+	INVALID_TYPE
+}
+
 # Global RNG for this script
 var rng := RandomNumberGenerator.new()
 

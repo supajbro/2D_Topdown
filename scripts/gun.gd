@@ -1,6 +1,7 @@
 class_name gun
 extends Node
 
+@export var gun_type: Global.Gun_Types
 @export var is_enemy_gun: bool = false
 
 @export var bullet_scene: PackedScene

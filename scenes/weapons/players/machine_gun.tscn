@@ -7,6 +7,7 @@
 
 [node name="machine_gun" type="Node2D"]
 script = ExtResource("1_6vd8m")
+gun_type = 1
 bullet_scene = ExtResource("2_6vd8m")
 fire_rate = 0.05
 

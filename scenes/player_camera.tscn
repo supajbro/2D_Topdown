@@ -3,12 +3,10 @@
 [ext_resource type="Script" uid="uid://o4gvai8pxdpm" path="res://scripts/player_camera.gd" id="1_7pa0d"]
 
 [node name="PlayerCamera" type="Camera2D"]
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
 drag_bottom_margin = 0.1
 script = ExtResource("1_7pa0d")
-shake_frequency = 1.0
-mini_shake = 15.0
+shake_power_pistol = 20.0
+shake_power_shotgun = 25.0

@@ -21,33 +21,37 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	camera_movement(delta)
-	
-	camera_shake(delta)
 
 func camera_movement(delta: float):
 	global_position = global_position.lerp(player.global_position, position_smoothing_speed * delta)
+	
+	update_shake(delta)
+	apply_shake_to_camera()
 	
 # -------------------------
 # SCREEN SHAKE FUNCTIONS
 # -------------------------
 
-var shake_amount: float = 0.0
-var shake_offset: Vector2 = Vector2.ZERO
+var shake_amount: Vector2 = Vector2.ZERO
+@export var shake_decay: float = 12.0
+@export var shake_power_pistol: float = 10.0
+@export var shake_power_machine_gun: float = 5.0
+@export var shake_power_shotgun: float = 15.0
 
-@export var shake_frequency: float = 10
-@export var shake_decay: float = 5.0
-@export var mini_shake: float = 1.25
-@export var medium_shake: float = 2.5
-@export var large_shake: float = 5.00
-
-func apply_shake(amount: float):
-	if shake_amount <= 0.01:
-		shake_amount = amount
+func add_shake(amount: Vector2, type: Global.Gun_Types) -> void:
+	var power = shake_power_pistol
+	match(type):
+		Global.Gun_Types.MACHINE_GUN:
+			power = shake_power_machine_gun
+		Global.Gun_Types.SHOTGUN:
+			power = shake_power_shotgun
 	
-func camera_shake(delta: float):
-	if shake_amount > 0.01:
-		shake_offset = Vector2(randf_range(-shake_frequency, shake_frequency), randf_range(-shake_frequency, shake_frequency)) * shake_amount
-		global_position += shake_offset
-		
-		shake_amount -= shake_decay * delta
-		shake_amount = max(shake_amount, 0)
+	# Add instant shake impulse
+	shake_amount += amount * power
+
+func update_shake(delta: float) -> void:
+	# Apply velocity to offset
+	shake_amount = shake_amount.lerp(Vector2.ZERO, shake_decay * delta)
+
+func apply_shake_to_camera() -> void:
+	global_position += shake_amount

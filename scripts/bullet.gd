@@ -1,6 +1,7 @@
 class_name bullet
 extends Area2D
 
+@export var gun_type: Global.Gun_Types
 @export var is_enemy_bullet: bool = false
 
 @export var speed: float = 100
@@ -20,6 +21,7 @@ func _ready():
 		direction = (Global.player.global_position - global_position).normalized()
 	else:
 		direction = (get_global_mouse_position() - global_position).normalized()
+		Global.GetCamera().add_shake(direction, gun_type)
 		
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
