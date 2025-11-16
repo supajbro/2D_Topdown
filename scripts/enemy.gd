@@ -80,4 +80,9 @@ func damage(damage: float):
 	current_health = max(0, current_health - damage)
 	
 	if(current_health <= 0):
-		queue_free()
+		die()
+
+func die():
+	Global.GetEnemySpawner().current_enemies_spawned -= 1
+	print(Global.GetEnemySpawner().current_enemies_spawned)
+	queue_free()

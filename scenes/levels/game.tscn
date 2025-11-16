@@ -672,3 +672,21 @@ position = Vector2(-64, 102)
 
 [node name="enemy_spawn16" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
 position = Vector2(-64, 355)
+
+[node name="enemy_spawn17" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
+position = Vector2(-102, 256)
+
+[node name="enemy_spawn18" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
+position = Vector2(260, 88)
+
+[node name="enemy_spawn19" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
+position = Vector2(260, 341)
+
+[node name="enemy_spawn20" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
+position = Vector2(-686, 119)
+
+[node name="enemy_spawn21" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
+position = Vector2(-324, -49)
+
+[node name="enemy_spawn22" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
+position = Vector2(-324, 204)

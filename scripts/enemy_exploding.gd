@@ -18,4 +18,4 @@ func _attack_state(delta):
 	explosion_instance.position = global_position
 	get_tree().current_scene.add_child(explosion_instance)
 	
-	queue_free()
+	die()
