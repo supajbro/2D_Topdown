@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://o4gvai8pxdpm" path="res://scripts/player_camera.gd" id="1_7pa0d"]
 
 [node name="PlayerCamera" type="Camera2D"]
+zoom = Vector2(0.5, 0.5)
 drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1

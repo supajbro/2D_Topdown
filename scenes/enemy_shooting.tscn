@@ -100,7 +100,6 @@ animations = [{
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 0
 script = ExtResource("1_hofrk")
 pistol_scene = ExtResource("2_6kja6")
 speed = 25.0
@@ -115,5 +114,10 @@ sprite_frames = SubResource("SpriteFrames_oprun")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.29672205
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 12.0
+debug_enabled = true
 
 [connection signal="ready" from="." to="." method="_on_ready"]
