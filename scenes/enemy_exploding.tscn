@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://gblwrgns653e" path="res://scenes/weapons/enemies/explosion.tscn" id="2_aq5te"]
 [ext_resource type="Texture2D" uid="uid://cpl8kgd3nj4nj" path="res://assets/temp/character/idle.png" id="3_1sebh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aq5te"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("3_1sebh")
@@ -109,15 +109,20 @@ max_health = 50.0
 enemy_type = 1
 
 [node name="enemy_collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_g2els")
+shape = SubResource("CircleShape2D_aq5te")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.5216926, 0.17143202, 0, 1)
+position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_oprun")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.29672205
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
 avoidance_enabled = true
 radius = 12.0
 debug_enabled = true
