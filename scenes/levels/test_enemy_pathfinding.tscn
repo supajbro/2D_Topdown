@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://82pp0g6blk3k"]
+[gd_scene load_steps=35 format=3 uid="uid://82pp0g6blk3k"]
 
 [ext_resource type="PackedScene" uid="uid://xa3dywrdag0p" path="res://scenes/game_manager.tscn" id="1_axlch"]
 [ext_resource type="Texture2D" uid="uid://dqhkrtmoq1kon" path="res://assets/temp/terrain_tiles_v2.png" id="2_kux1m"]
 [ext_resource type="PackedScene" uid="uid://cna041jnqbbwy" path="res://scenes/enemy_spawner.tscn" id="3_ii3ix"]
 [ext_resource type="Texture2D" uid="uid://b2m0vu2sl6vwl" path="res://assets/temp/fence_tiles.png" id="3_kux1m"]
+[ext_resource type="PackedScene" uid="uid://k2qqj67k3ifl" path="res://scenes/enemy_spawn_point.tscn" id="5_ii3ix"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kux1m"]
 vertices = PackedVector2Array(-129, 36, -173, 36, -173, -8, -129, -8)
@@ -986,22 +987,30 @@ layer_0/tile_data = PackedInt32Array(-131073, 65536, 5, -65537, 65536, 5, -1, 65
 [node name="EnemyTests" type="Node" parent="."]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_ii3ix")]
-spawn_test_enemies = false
 
-[node name="enemy_spawn" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
-position = Vector2(-375, -36)
+[node name="enemy_spawn_point" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(-351, 9)
 
-[node name="enemy_spawn2" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
-position = Vector2(-380, 82)
+[node name="enemy_spawn_point2" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(-355, 115)
 
-[node name="enemy_spawn3" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
-position = Vector2(-374, 228)
+[node name="enemy_spawn_point3" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(-360, 198)
 
-[node name="enemy_spawn4" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
-position = Vector2(-321, 275)
+[node name="enemy_spawn_point4" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(-377, 280)
 
-[node name="enemy_spawn5" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
-position = Vector2(-60, 275)
+[node name="enemy_spawn_point5" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(-41, 274)
 
-[node name="enemy_spawn6" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
-position = Vector2(242, 259)
+[node name="enemy_spawn_point6" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(265, 119)
+
+[node name="enemy_spawn_point7" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(259, -57)
+
+[node name="enemy_spawn_point8" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(-37, -40)
+
+[node name="enemy_spawn_point9" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
+position = Vector2(146, -45)

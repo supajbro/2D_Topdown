@@ -3,7 +3,7 @@ extends Node
 
 var _enemy_count: int = Global.Enemy_Types.size()
 var enemy_list
-var spawn_points: Array
+var spawn_points: Array[enemy_spawn_point]
 
 # choose what enemies we want to spawn (debug feature)
 var test_enemy_list: Array
@@ -17,7 +17,9 @@ func _ready():
 	Global.enemy_spawner = self
 	
 	# initialises all spawn points
-	spawn_points = get_tree().get_nodes_in_group("enemy_spawn")
+	for n in get_tree().get_nodes_in_group("enemy_spawn_point"):
+		if n is enemy_spawn_point:
+			spawn_points.append(n)
 	
 	current_wave_count = 0
 	
