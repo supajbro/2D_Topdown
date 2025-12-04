@@ -3,23 +3,11 @@ extends CharacterBody2D
 
 @export var speed: float = 50
 
-@export var pistol_scene: PackedScene
-var pistol_instance: gun = null
-
-@export var machine_gun_scene: PackedScene
-var machine_gun_instance: gun = null
-
-@export var shotgun_scene: PackedScene
-var shotgun_instance: gun = null
-
-# the active weapon the player is using
-var selected_weapon: gun = null
-
 # Health
 var current_health: float
 @export var max_health: float = 100
 
-func _on_ready() -> void:
+func init():
 	add_to_group("player")
 	
 	current_health = max_health
@@ -38,9 +26,27 @@ func _on_ready() -> void:
 	
 	selected_weapon = pistol_instance
 
+func _on_ready() -> void:
+	init()
+	
 func _physics_process(delta: float) -> void:
 	# Control movement
 	velocity = Vector2.ZERO
+	
+	movement(delta)
+	velocity = velocity.normalized() * speed
+	dash(delta)
+	move_and_slide()
+	
+	# Handle gun controls
+	switch_weapon()
+	shoot(delta)
+
+# -------------------------
+# MOVEMENT
+# -------------------------
+
+func movement(delta: float):
 	if Input.is_action_pressed("MoveRight"):
 		velocity.x += 1
 	if Input.is_action_pressed("MoveLeft"):
@@ -50,16 +56,61 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("MoveUp"):
 		velocity.y -= 1
 
-	velocity = velocity.normalized() * speed
-	move_and_slide()
+# -------------------------
+# DASH
+# -------------------------
+
+@export var dash_power: float = 100
+var is_dashing: bool = false
+
+var dash_time = 0.25
+var dash_timer = 0.0
+var dash_direction = Vector2.ZERO
+
+@export var dash_cooldown: float = 1
+var current_dash_cooldown: float
+
+func dash(delta: float):
+	if current_dash_cooldown < dash_cooldown:
+		current_dash_cooldown += delta
 	
-	# Handle gun controls
-	switch_weapon()
-	shoot(delta)
+	if Input.is_action_pressed("Dash") && current_dash_cooldown >= dash_cooldown:
+		current_dash_cooldown = 0.0
+		
+		# we have no current velocity, therefore no dash will happen
+		if velocity.length() < 0.1:
+			return
+			
+		is_dashing = true
+		dash_timer = dash_time
+		dash_direction = velocity.normalized()
+		
+	if is_dashing:
+		dash_timer -= delta
+		
+		var t = dash_timer / dash_time
+		var dash_strength = lerp(dash_power, 0.0, 1.0 - t)
+		
+		velocity += dash_direction * dash_strength * delta
+		
+		if dash_timer <= 0.0:
+			is_dashing = false
 
 # -------------------------
 # WEAPON FUNCTIONS
 # -------------------------
+
+@export var pistol_scene: PackedScene
+var pistol_instance: gun = null
+
+@export var machine_gun_scene: PackedScene
+var machine_gun_instance: gun = null
+
+@export var shotgun_scene: PackedScene
+var shotgun_instance: gun = null
+
+# the active weapon the player is using
+var selected_weapon: gun = null
 
 func shoot(delta: float):
 	if Input.is_action_pressed("Shoot"):
