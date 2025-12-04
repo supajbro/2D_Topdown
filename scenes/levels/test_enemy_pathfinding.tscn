@@ -986,6 +986,7 @@ layer_0/tile_data = PackedInt32Array(-131073, 65536, 5, -65537, 65536, 5, -1, 65
 [node name="EnemyTests" type="Node" parent="."]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_ii3ix")]
+spawn_test_enemies = false
 
 [node name="enemy_spawn" type="Node2D" parent="EnemySpawner" groups=["enemy_spawn"]]
 position = Vector2(-375, -36)

@@ -6,9 +6,7 @@
 
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_ks1gq")
+max_wave_count = 2
 max_enemies_spawned = 15
 enemies_shooting_scene = ExtResource("2_xl0gr")
 enemies_exploding_scene = ExtResource("3_ih16b")
-min_spawn_delay = 0.5
-max_spawn_delay = 2.5
-spawn_test_enemies = null
