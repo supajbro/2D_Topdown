@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://kvc6hnypvii4"]
+
+[ext_resource type="Script" uid="uid://dkisk075pc3f" path="res://scripts/ui/ui_wave_complete.gd" id="1_8p6f1"]
+
+[node name="ui_wave_complete" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8p6f1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_alignment = 1
