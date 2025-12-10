@@ -136,7 +136,6 @@ func damage(damage: float):
 		return
 		
 	current_health = max(0, current_health - damage)
-	print(current_health)
 	
 	if(current_health <= 0):
 		print("Player is dead")

@@ -13,6 +13,11 @@ var test_enemy_list: Array
 @export var max_wave_count: int = 1 # Updated per scene
 var current_wave_count: int
 
+# How long it takes for another wave to spawn
+@export var max_wave_spawn_delay: float = 1
+@export var delay_initial_spawn: bool = false
+var current_spawn_delay: float = 0
+
 func _ready():
 	Global.enemy_spawner = self
 	
@@ -28,8 +33,9 @@ func _ready():
 	test_enemy_list 	= [enemies_shooting_scene]
 	
 	# spawn first wave of enemies
-	var _list = test_enemy_list if spawn_test_enemies else enemy_list
-	spawn_enemy(_list)
+	if !delay_initial_spawn:
+		var _list = test_enemy_list if spawn_test_enemies else enemy_list
+		spawn_enemy(_list)
 
 # -------------------------
 # UPDATE FUNCTIONS
@@ -40,12 +46,19 @@ func _process(delta: float) -> void:
 
 # spawns all enemies again
 func spawning_group_enemies_update(delta: float) -> void:
-	# don't spawn new enemies if there are still enemies or we've hit max wave count
-	if(current_enemies_spawned > 0 || current_wave_count >= max_wave_count):
+	# don't spawn new enemies if we've hit max wave count
+	if(current_wave_count >= max_wave_count):
 		return
+	
+	# when wave is complete, start time to spawn next delay
+	if current_enemies_spawned == 0:
+		current_spawn_delay += delta
+		print(current_spawn_delay)
 		
-	var _list = test_enemy_list if spawn_test_enemies else enemy_list
-	spawn_enemy(_list)
+	if current_spawn_delay >= max_wave_spawn_delay:
+		current_spawn_delay = 0
+		var _list = test_enemy_list if spawn_test_enemies else enemy_list
+		spawn_enemy(_list)
 		
 # -------------------------
 # SPAWNING FUNCTIONS
@@ -82,8 +95,6 @@ func spawn_enemy(enemies: Array):
 			var enemy = enemies[spawn_point.enemy_type].instantiate()
 			enemy.global_position = spawn_point.global_position
 			add_child(enemy)
-			current_enemies_spawned += 1
-			print(spawn_point.enemy_type)
 		# Spawn a random enemy type
 		else:
 			var temp_rand_value: int = Global.rng.randi_range(0, enemies.size() - 1)
