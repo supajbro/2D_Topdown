@@ -66,24 +66,28 @@ func spawn_enemy(enemies: Array):
 	
 	if (enemies.size() <= 0):
 		return
+		
 	if spawn_points.size() < max_enemies_spawned:
 		push_error("Not enough spawn points for unique spawns: " + str(spawn_points.size()))
 		return
 	
 	current_wave_count += 1
 	print("wave count:", current_wave_count)
-	
-	# Shuffle the spawn points so every run is random
-	var shuffled = spawn_points.duplicate()
-	shuffled.shuffle()
 
-	# Spawn only the first N spawn points
 	for i in range(max_enemies_spawned):
-		var spawn_point = shuffled[i]
-
+		var spawn_point = spawn_points[i]
+		
+		# Spawn specific enemy type
+		if spawn_point.spawn_specific_enemy == true:
+			var enemy = enemies[spawn_point.enemy_type].instantiate()
+			enemy.global_position = spawn_point.global_position
+			add_child(enemy)
+			current_enemies_spawned += 1
+			print(spawn_point.enemy_type)
 		# Spawn a random enemy type
-		var temp_rand_value: int = Global.rng.randi_range(0, enemies.size() - 1)
-		var enemy = enemies[temp_rand_value].instantiate()
-		enemy.global_position = spawn_point.global_position
-		add_child(enemy)
+		else:
+			var temp_rand_value: int = Global.rng.randi_range(0, enemies.size() - 1)
+			var enemy = enemies[temp_rand_value].instantiate()
+			enemy.global_position = spawn_point.global_position
+			add_child(enemy)
 		current_enemies_spawned += 1

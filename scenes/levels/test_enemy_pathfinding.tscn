@@ -990,27 +990,42 @@ layer_0/tile_data = PackedInt32Array(-131073, 65536, 5, -65537, 65536, 5, -1, 65
 
 [node name="enemy_spawn_point" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(-351, 9)
+spawn_specific_enemy = true
+enemy_type = 0
 
 [node name="enemy_spawn_point2" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(-355, 115)
+spawn_specific_enemy = true
+enemy_type = 0
 
 [node name="enemy_spawn_point3" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(-360, 198)
+spawn_specific_enemy = true
+enemy_type = 0
 
 [node name="enemy_spawn_point4" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(-377, 280)
+spawn_specific_enemy = true
+enemy_type = 0
 
 [node name="enemy_spawn_point5" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(-41, 274)
+spawn_specific_enemy = true
+enemy_type = 1
 
 [node name="enemy_spawn_point6" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(265, 119)
+spawn_specific_enemy = true
+enemy_type = 1
 
 [node name="enemy_spawn_point7" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(259, -57)
+enemy_type = 1
 
 [node name="enemy_spawn_point8" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(-37, -40)
+enemy_type = 1
 
 [node name="enemy_spawn_point9" parent="EnemySpawner" instance=ExtResource("5_ii3ix")]
 position = Vector2(146, -45)
+enemy_type = 1
