@@ -21,6 +21,8 @@ const SPAWN_NEW_WAVE: 			float = 4
 var shown_wave_complete_ui: bool = false
 var new_wave_timer: float = 0
 
+var debug_killed_all_enemies: bool = false
+
 func _ready():
 	Global.enemy_spawner = self
 	
@@ -46,9 +48,19 @@ func _ready():
 
 func _process(delta: float) -> void:
 	spawning_group_enemies_update(delta)
-	
-	if Input.is_key_pressed(KEY_K):
-		debug_kill_all_enemies()
+			
+func _input(event):
+	if not OS.is_debug_build():
+		return
+
+	if event is InputEventKey and event.keycode == KEY_K:
+		if event.pressed:
+			if !debug_killed_all_enemies:
+				debug_killed_all_enemies = true
+				debug_kill_all_enemies()
+		else:
+			debug_killed_all_enemies = false
+
 
 # spawns all enemies again
 func spawning_group_enemies_update(delta: float) -> void:
@@ -118,7 +130,8 @@ func spawn_enemy(enemies: Array):
 # -------------------------
 
 func debug_kill_all_enemies():
-	while enemies_alive.size() > 0:
-		var enemy = enemies_alive[0]
-		enemies_alive.erase(enemy)
+	var temp_enemies_alive = enemies_alive
+	for enemy in enemies_alive:
 		enemy.die()
+	enemies_alive = temp_enemies_alive
+	debug_killed_all_enemies = false
