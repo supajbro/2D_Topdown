@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgekm31fmg5ts"]
+
+[ext_resource type="Script" uid="uid://cvm31likq4030" path="res://scripts/ui/ui_manager.gd" id="1_qjbkm"]
+[ext_resource type="PackedScene" uid="uid://kvc6hnypvii4" path="res://scenes/ui/ui_wave_complete.tscn" id="2_fypb7"]
+
+[node name="UIManager" type="CanvasLayer"]
+script = ExtResource("1_qjbkm")
+
+[node name="Screens" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ui_wave_complete" parent="Screens" instance=ExtResource("2_fypb7")]
+layout_mode = 1

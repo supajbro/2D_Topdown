@@ -14,9 +14,11 @@ var test_enemy_list: Array
 var current_wave_count: int
 
 # How long it takes for another wave to spawn
-@export var max_wave_spawn_delay: float = 1
+const START_WAVE_COMPLETE_UI: 	float = 1
+const SPAWN_NEW_WAVE: 			float = 4
 @export var delay_initial_spawn: bool = false
-var current_spawn_delay: float = 0
+var shown_wave_complete_ui: bool = false
+var new_wave_timer: float = 0
 
 func _ready():
 	Global.enemy_spawner = self
@@ -46,19 +48,22 @@ func _process(delta: float) -> void:
 
 # spawns all enemies again
 func spawning_group_enemies_update(delta: float) -> void:
-	# don't spawn new enemies if we've hit max wave count
-	if(current_wave_count >= max_wave_count):
-		return
-	
 	# when wave is complete, start time to spawn next delay
 	if current_enemies_spawned == 0:
-		current_spawn_delay += delta
-		print(current_spawn_delay)
+		new_wave_timer += delta
 		
-	if current_spawn_delay >= max_wave_spawn_delay:
-		current_spawn_delay = 0
+	if new_wave_timer >= START_WAVE_COMPLETE_UI && !shown_wave_complete_ui && !UI.is_screen_active(UI.SCREENS["UI_WAVE_COMPLETE"]):
+		shown_wave_complete_ui = true
+		UI.set_screens_text(UI.SCREENS["UI_WAVE_COMPLETE"], "Wave " + 
+		str(current_wave_count) + "/" + str(max_wave_count) + 
+		" Complete")
+		UI.show_screen(UI.SCREENS["UI_WAVE_COMPLETE"])
+	elif new_wave_timer >= SPAWN_NEW_WAVE && current_wave_count < max_wave_count:
+		new_wave_timer = 0
+		shown_wave_complete_ui = false
 		var _list = test_enemy_list if spawn_test_enemies else enemy_list
 		spawn_enemy(_list)
+			
 		
 # -------------------------
 # SPAWNING FUNCTIONS

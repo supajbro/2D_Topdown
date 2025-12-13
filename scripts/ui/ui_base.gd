@@ -21,7 +21,11 @@ func set_icon(tex: Texture2D):
 	icon = tex
 	if icon_node:
 		icon_node.texture = tex
-		
+
+# Empty func so classes that require text can easily set their text
+func set_text(text: String):
+	pass
+	
 # animations
 func fade_in():
 	modulate.a = 0.0
