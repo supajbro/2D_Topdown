@@ -5,10 +5,8 @@ extends UIBase
 # How long the text stays in the center
 const HOLD_TIME := 0.5
 
-# TODO: REMOVE THIS - FOR TESTING ONLY
 func _ready():
 	super()
-	show_ui()
 	
 func show_ui():
 	super()

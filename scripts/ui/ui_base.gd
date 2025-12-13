@@ -26,6 +26,15 @@ func set_icon(tex: Texture2D):
 func set_text(text: String):
 	pass
 	
+# Empty func so classes that require sliders can easily set their slider value
+func set_slider_value(value: float):
+	pass
+	
+# Empty func so classes that require sliders can easily set their slider value smoothly
+var to_value_slider: float = -1
+func smoothly_set_slider_value(to_value: float):
+	to_value_slider = to_value
+	
 # animations
 func fade_in():
 	modulate.a = 0.0

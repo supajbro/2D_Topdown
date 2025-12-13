@@ -10,7 +10,9 @@ var current_health: float
 func init():
 	add_to_group("player")
 	
+	# Player health
 	current_health = max_health
+	health_ui()
 	
 	pistol_instance = pistol_scene.instantiate()
 	pistol_instance.position = global_position
@@ -134,8 +136,13 @@ func switch_weapon():
 func damage(damage: float):
 	if(current_health <= 0):
 		return
-		
+	
 	current_health = max(0, current_health - damage)
+	UI.smoothly_set_screens_slider_value(UI.SCREENS["UI_PLAYER_HEALTH"], current_health)
 	
 	if(current_health <= 0):
 		print("Player is dead")
+		
+func health_ui():
+	UI.show_screen(UI.SCREENS["UI_PLAYER_HEALTH"])
+	UI.set_screens_slider_value(UI.SCREENS["UI_PLAYER_HEALTH"], current_health)

@@ -6,6 +6,7 @@ var active_screen: Control = null
 
 const SCREENS = {
 	"UI_WAVE_COMPLETE": "ui_wave_complete",
+	"UI_PLAYER_HEALTH": "ui_player_health",
 	"PAUSE_MENU": "pause_menu",
 	"HUD": "hud"
 }
@@ -53,6 +54,20 @@ func set_screens_text(name: String, text: String):
 	var screen := screens.get_node_or_null(name)
 	if screen is UIBase:
 		screen.set_text(text)
+	else:
+		push_error("UI screen not found: " + name)
+		
+func set_screens_slider_value(name: String, value: float):
+	var screen := screens.get_node_or_null(name)
+	if screen is UIBase:
+		screen.set_slider_value(value)
+	else:
+		push_error("UI screen not found: " + name)
+		
+func smoothly_set_screens_slider_value(name: String, to_value: float):
+	var screen := screens.get_node_or_null(name)
+	if screen is UIBase:
+		screen.smoothly_set_slider_value(to_value)
 	else:
 		push_error("UI screen not found: " + name)
 			
