@@ -3,6 +3,7 @@ extends Node
 
 var _enemy_count: int = Global.Enemy_Types.size()
 var enemy_list
+var enemies_alive: Array[enemy_base]
 var spawn_points: Array[enemy_spawn_point]
 
 # choose what enemies we want to spawn (debug feature)
@@ -45,6 +46,9 @@ func _ready():
 
 func _process(delta: float) -> void:
 	spawning_group_enemies_update(delta)
+	
+	if Input.is_key_pressed(KEY_K):
+		debug_kill_all_enemies()
 
 # spawns all enemies again
 func spawning_group_enemies_update(delta: float) -> void:
@@ -90,7 +94,6 @@ func spawn_enemy(enemies: Array):
 		return
 	
 	current_wave_count += 1
-	print("wave count:", current_wave_count)
 
 	for i in range(max_enemies_spawned):
 		var spawn_point = spawn_points[i]
@@ -100,10 +103,22 @@ func spawn_enemy(enemies: Array):
 			var enemy = enemies[spawn_point.enemy_type].instantiate()
 			enemy.global_position = spawn_point.global_position
 			add_child(enemy)
+			enemies_alive.append(enemy)
 		# Spawn a random enemy type
 		else:
 			var temp_rand_value: int = Global.rng.randi_range(0, enemies.size() - 1)
 			var enemy = enemies[temp_rand_value].instantiate()
 			enemy.global_position = spawn_point.global_position
 			add_child(enemy)
+			enemies_alive.append(enemy)
 		current_enemies_spawned += 1
+		
+# -------------------------
+# DEBUG FUNCTIONS
+# -------------------------
+
+func debug_kill_all_enemies():
+	while enemies_alive.size() > 0:
+		var enemy = enemies_alive[0]
+		enemies_alive.erase(enemy)
+		enemy.die()
