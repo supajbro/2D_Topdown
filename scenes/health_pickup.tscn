@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvctvxhkoigxj"]
+
+[ext_resource type="Script" uid="uid://bd584pcgts3y6" path="res://scripts/health_pickup.gd" id="1_ciapp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkhbd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ciapp"]
+
+[node name="health_pickup" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_ciapp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dkhbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = SubResource("CanvasTexture_ciapp")

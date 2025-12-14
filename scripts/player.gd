@@ -143,6 +143,13 @@ func damage(damage: float):
 	if(current_health <= 0):
 		print("Player is dead")
 		
+func add_health(value: float):
+	if(current_health >= max_health):
+		return
+	
+	current_health = min(max_health, current_health + value)
+	UI.smoothly_set_screens_slider_value(UI.SCREENS["UI_PLAYER_HEALTH"], current_health)
+		
 func health_ui():
 	UI.show_screen(UI.SCREENS["UI_PLAYER_HEALTH"])
 	UI.set_screens_slider_value(UI.SCREENS["UI_PLAYER_HEALTH"], current_health)

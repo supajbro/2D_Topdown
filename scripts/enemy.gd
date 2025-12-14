@@ -16,6 +16,9 @@ var player_ref: Node2D
 
 @export var enemy_type: Global.Enemy_Types
 
+# random chance to spawn health pickup
+@export var health_pickup: PackedScene
+
 func _ready():
 	add_to_group("enemy")
 	player_ref = Global.player
@@ -109,6 +112,13 @@ func damage(damage: float):
 		die()
 
 func die():
+	spawn_health_pickup()
 	Global.GetEnemySpawner().current_enemies_spawned -= 1
 	print(Global.GetEnemySpawner().current_enemies_spawned)
 	queue_free()
+	
+func spawn_health_pickup():
+	if Global.rng.randf() < 0.2:
+		var pickup = health_pickup.instantiate()
+		pickup.global_position = global_position
+		get_parent().add_child(pickup)
