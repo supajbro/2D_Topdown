@@ -22,3 +22,5 @@ func shoot(pos: Vector2):
 	bullet_instance.position = pos
 	
 	get_tree().current_scene.add_child(bullet_instance)
+	
+	Global.GetCamera().start_zoom_out(gun_type)

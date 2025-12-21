@@ -14,6 +14,7 @@ func _ready():
 	else:
 		direction = ((get_global_mouse_position() + rand_offset) - global_position).normalized()
 		Global.GetCamera().add_shake(-direction, gun_type)
+		Global.GetCamera().start_zoom_out(gun_type)
 		
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	

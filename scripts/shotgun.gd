@@ -18,3 +18,4 @@ func shoot(pos: Vector2):
 		bullet.global_position = spawn.global_position
 		get_tree().current_scene.add_child(bullet)
 		print("Happened")
+	Global.GetCamera().start_zoom_out(gun_type)

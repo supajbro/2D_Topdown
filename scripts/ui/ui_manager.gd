@@ -18,7 +18,7 @@ func _ready():
 	hide_all()
 	
 func show_screen(name: String):
-	hide_all()
+	#hide_all()
 	
 	var screen := screens.get_node_or_null(name)
 	if screen is UIBase:

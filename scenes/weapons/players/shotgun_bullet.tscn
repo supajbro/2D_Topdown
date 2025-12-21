@@ -12,6 +12,7 @@ collision_layer = 8
 collision_mask = 4
 script = ExtResource("1_8btw5")
 max_x_offset = 50
+gun_type = 2
 speed = 150.0
 damage = 100.0
 lifetime = 0.5
