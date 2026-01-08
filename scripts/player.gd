@@ -27,6 +27,16 @@ func init():
 	add_child(shotgun_instance)
 	
 	selected_weapon = pistol_instance
+	
+	DebugMenu.register_debug_slider(
+	"Player",
+	"Move Speed",
+	50,
+	600,
+	speed,
+	func(value):
+		speed = value
+	)
 
 func _on_ready() -> void:
 	init()

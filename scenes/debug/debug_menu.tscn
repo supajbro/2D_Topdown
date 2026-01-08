@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://kmlqq4o4bax0"]
+
+[ext_resource type="Script" uid="uid://beo7rxdmdk4fr" path="res://scripts/debug/debug_menu.gd" id="1_4udpp"]
+[ext_resource type="PackedScene" uid="uid://c8lfrwlxn3yjd" path="res://scenes/debug/debug_slider.tscn" id="2_4y4sk"]
+
+[node name="debug_menu" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_4udpp")
+slider_scene = ExtResource("2_4y4sk")
+
+[node name="Root" type="PanelContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Root"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Root/PanelContainer"]
+layout_mode = 2
