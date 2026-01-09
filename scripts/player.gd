@@ -14,17 +14,7 @@ func init():
 	current_health = max_health
 	health_ui()
 	
-	pistol_instance = pistol_scene.instantiate()
-	pistol_instance.position = global_position
-	add_child(pistol_instance)
-	
-	machine_gun_instance = machine_gun_scene.instantiate()
-	machine_gun_instance.position = global_position
-	add_child(machine_gun_instance)
-	
-	shotgun_instance = shotgun_scene.instantiate()
-	shotgun_instance.position = global_position
-	add_child(shotgun_instance)
+	spawn_weapons()
 	
 	selected_weapon = pistol_instance
 	
@@ -121,8 +111,28 @@ var machine_gun_instance: gun = null
 @export var shotgun_scene: PackedScene
 var shotgun_instance: gun = null
 
+@export var rocket_launcher_scene: PackedScene
+var rocket_launcher_instance: gun = null
+
 # the active weapon the player is using
 var selected_weapon: gun = null
+
+func spawn_weapons():
+	pistol_instance = pistol_scene.instantiate()
+	pistol_instance.position = global_position
+	add_child(pistol_instance)
+	
+	machine_gun_instance = machine_gun_scene.instantiate()
+	machine_gun_instance.position = global_position
+	add_child(machine_gun_instance)
+	
+	shotgun_instance = shotgun_scene.instantiate()
+	shotgun_instance.position = global_position
+	add_child(shotgun_instance)
+	
+	rocket_launcher_instance = rocket_launcher_scene.instantiate()
+	rocket_launcher_instance.position = global_position
+	add_child(rocket_launcher_instance)
 
 func shoot(delta: float):
 	if Input.is_action_pressed("Shoot"):
@@ -133,7 +143,7 @@ func shoot(delta: float):
 			
 func switch_weapon():
 	if Input.is_action_pressed("slot_one"):
-		selected_weapon = pistol_instance
+		selected_weapon = rocket_launcher_instance
 	elif Input.is_action_pressed("slot_two"):
 		selected_weapon = machine_gun_instance
 	elif Input.is_action_pressed("slot_three"):

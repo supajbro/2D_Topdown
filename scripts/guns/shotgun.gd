@@ -1,4 +1,4 @@
-extends "res://scripts/gun.gd"
+extends "res://scripts/guns/gun.gd"
 
 var bullet_instance_2: bullet = null
 var bullet_instance_3: bullet = null

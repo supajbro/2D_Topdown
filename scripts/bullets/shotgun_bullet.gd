@@ -1,4 +1,4 @@
-extends "res://scripts/bullet.gd"
+extends "res://scripts/bullets/bullet.gd"
 
 @export var max_x_offset = 25
 @export var max_y_offset = 5

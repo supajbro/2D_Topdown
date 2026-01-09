@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccqxdqyf2qu67"]
+
+[ext_resource type="Script" uid="uid://caq8jrmh0xix3" path="res://scripts/guns/rocket_launcher.gd" id="1_rxsom"]
+[ext_resource type="PackedScene" uid="uid://ctmbayif65a1x" path="res://scenes/bullets/players/rocket_launcher_bullet.tscn" id="2_2ij06"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_46jcc"]
+
+[node name="rocket_launcher" type="Node2D"]
+script = ExtResource("1_rxsom")
+bullet_scene = ExtResource("2_2ij06")
+fire_rate = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_46jcc")

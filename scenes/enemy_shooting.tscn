@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bc28i6v0554kf"]
 
 [ext_resource type="Script" uid="uid://bys7mflahf1ic" path="res://scripts/enemy_shooting.gd" id="1_hofrk"]
-[ext_resource type="PackedScene" uid="uid://cje2jxjsuqoh7" path="res://scenes/weapons/enemies/enemy_pistol.tscn" id="2_6kja6"]
+[ext_resource type="PackedScene" uid="uid://cje2jxjsuqoh7" path="res://scenes/bullets/enemies/enemy_pistol.tscn" id="2_6kja6"]
 [ext_resource type="PackedScene" uid="uid://cvctvxhkoigxj" path="res://scenes/health_pickup.tscn" id="3_6kja6"]
 [ext_resource type="Texture2D" uid="uid://cpl8kgd3nj4nj" path="res://assets/temp/character/idle.png" id="3_f8rf5"]
 

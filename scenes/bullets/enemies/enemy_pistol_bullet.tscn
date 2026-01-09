@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://wnmhkvkqnq5d"]
+[gd_scene load_steps=4 format=3 uid="uid://oy3gv2c6al7l"]
 
-[ext_resource type="Script" uid="uid://cbwoxucleruev" path="res://scripts/bullet.gd" id="1_r6uc2"]
+[ext_resource type="Script" uid="uid://cbwoxucleruev" path="res://scripts/bullets/bullet.gd" id="1_eoc3x"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_mkf8s"]
 
@@ -8,10 +8,9 @@
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 8
-collision_mask = 4
-script = ExtResource("1_r6uc2")
-speed = 250.0
-damage = 100.0
+collision_mask = 2
+script = ExtResource("1_eoc3x")
+is_enemy_bullet = true
 lifetime = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
