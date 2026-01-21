@@ -7,6 +7,7 @@ var active_screen: Control = null
 const SCREENS = {
 	"UI_WAVE_COMPLETE": "ui_wave_complete",
 	"UI_PLAYER_HEALTH": "ui_player_health",
+	"UI_WEAPON_SLOTS": "ui_weapon_slots",
 	"PAUSE_MENU": "pause_menu",
 	"HUD": "hud"
 }

@@ -20,7 +20,6 @@ func play_wave_complete():
 	# Do the whole animation sequence
 	_animate_in_out()
 
-
 func _animate_in_out():
 	# Clear any previous tweens
 	# TODO: Add this back when finished testing

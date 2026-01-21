@@ -18,6 +18,9 @@ func init():
 	
 	selected_weapon = pistol_instance
 	
+	# Display initial UI
+	UI.show_screen(UI.SCREENS["UI_WEAPON_SLOTS"])
+	
 	DebugMenu.register_debug_slider(
 	"Player",
 	"Move Speed",
