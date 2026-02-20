@@ -106,6 +106,7 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_3vyb7")
 speed = 100.0
+max_health = null
 dash_power = 10000.0
 dash_cooldown = 0.5
 pistol_scene = ExtResource("2_qhqgy")

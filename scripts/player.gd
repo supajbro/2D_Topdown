@@ -16,7 +16,13 @@ func init():
 	
 	spawn_weapons()
 	
-	selected_weapon = pistol_instance
+	# Initialise the map of weapons in the constructor so values aren't null.
+	weapon_map = {
+		Global.Gun_Types.PISTOL: pistol_instance,
+		Global.Gun_Types.MACHINE_GUN: machine_gun_instance,
+		Global.Gun_Types.SHOTGUN: shotgun_instance,
+		Global.Gun_Types.ROCKET_LAUNCHER: rocket_launcher_instance
+	}
 	
 	# Display initial UI
 	UI.show_screen(UI.SCREENS["UI_WEAPON_SLOTS"])
@@ -44,7 +50,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	# Handle gun controls
-	switch_weapon()
 	shoot(delta)
 
 # -------------------------
@@ -117,6 +122,8 @@ var shotgun_instance: gun = null
 @export var rocket_launcher_scene: PackedScene
 var rocket_launcher_instance: gun = null
 
+var weapon_map := {}
+
 # the active weapon the player is using
 var selected_weapon: gun = null
 
@@ -144,13 +151,11 @@ func shoot(delta: float):
 		else:
 			push_error("Selected weapon is null")
 			
-func switch_weapon():
-	if Input.is_action_pressed("slot_one"):
-		selected_weapon = rocket_launcher_instance
-	elif Input.is_action_pressed("slot_two"):
-		selected_weapon = machine_gun_instance
-	elif Input.is_action_pressed("slot_three"):
-		selected_weapon = shotgun_instance
+func switch_weapon(type: Global.Gun_Types):
+	if type == Global.Gun_Types.INVALID_TYPE:
+		return
+	selected_weapon = weapon_map.get(type)
+
 
 # -------------------------
 # HEALTH FUNCTIONS

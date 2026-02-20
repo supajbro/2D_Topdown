@@ -1,0 +1,12 @@
+class_name WeaponSlot
+
+var weapon_type: Global.Gun_Types
+var weapon_slot: TextureRect
+var label: Label
+var bSelected: bool 	= false
+var bFilled: bool 	= false
+
+func add_weapon_to_slot(type: Global.Gun_Types, name: String, _active: bool = false):
+	weapon_type = type
+	label.text 	= name
+	bFilled 	= _active
