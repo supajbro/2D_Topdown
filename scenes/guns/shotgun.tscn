@@ -7,19 +7,18 @@
 [node name="shotgun" type="Node2D" node_paths=PackedStringArray("gun_sprite", "shoot_position")]
 script = ExtResource("1_ykhy1")
 gun_type = 2
-is_enemy_gun = null
 bullet_scene = ExtResource("2_a08op")
 fire_rate = 1.5
+gun_distance = 10.0
 gun_sprite = NodePath("Sprite2D")
 shoot_position = NodePath("Sprite2D/shoot_position")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_a08op")
-offset = Vector2(0, -25)
 
 [node name="shoot_position" type="Node2D" parent="Sprite2D"]
-position = Vector2(14, -40)
+position = Vector2(12, -14)
 
 [node name="Spawn_Left" type="Node2D" parent="."]
 position = Vector2(0, -10)

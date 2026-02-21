@@ -1,21 +1,21 @@
 class_name gun
 extends Node2D
+	
+@export var gun_type: 			Global.Gun_Types
+@export var is_enemy_gun: 		bool 				= false
 
-@export var gun_type: Global.Gun_Types
-@export var is_enemy_gun: bool = false
+@export var bullet_scene: 		PackedScene
+var bullet_instance: 			bullet 				= null
 
-@export var bullet_scene: PackedScene
-var bullet_instance: bullet = null
+var time_since_last_shot: 		float 				= 0
+@export var fire_rate: 			float 				= 0.5
 
-var time_since_last_shot: float = 0
-@export var fire_rate: float = 0.5
+@export var gun_distance: 		float 				= 25.0
+@export var gun_sprite: 		Sprite2D
+@export var shoot_position: 	Node2D
 
-@export var gun_distance: float = 25.0
-@export var gun_sprite: Sprite2D
-@export var shoot_position: Node2D
-
-var current_ammo: int  	= 0
-var max_ammo: int 		= -1
+var current_ammo: 				int  				= 0
+var max_ammo: 					int 				= -1
 
 func _ready():
 	current_ammo = max_ammo
@@ -58,11 +58,6 @@ func follow_mouse():
 
 	# Rotate gun to face mouse
 	gun_sprite.rotation = direction.angle()
-	
-	if direction.x < 0:
-		gun_sprite.flip_v = true
-	else:
-		gun_sprite.flip_v = false
 
 func set_sprite_visibility(bVisible: bool):
 	if gun_sprite == null:

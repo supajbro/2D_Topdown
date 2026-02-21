@@ -9,13 +9,13 @@ script = ExtResource("1_6vd8m")
 gun_type = 1
 bullet_scene = ExtResource("2_6vd8m")
 fire_rate = 0.05
+gun_distance = 10.0
 gun_sprite = NodePath("Sprite2D")
 shoot_position = NodePath("Sprite2D/shoot_position")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_l657o")
-offset = Vector2(0, -25)
 
 [node name="shoot_position" type="Node2D" parent="Sprite2D"]
-position = Vector2(14, -40)
+position = Vector2(14, -16)
