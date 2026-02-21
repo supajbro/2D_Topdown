@@ -40,7 +40,6 @@ func init_weapon_slots():
 		slot.weapon_slot.modulate = initial_color
 		slot.weapon_type = Global.Gun_Types.INVALID_TYPE
 	WEAPON_SLOTS[0].weapon_slot.modulate = selected_color
-	#WEAPON_SLOTS[0].weapon_type = Global.Gun_Types.INVALID_TYPE
 	
 func show_ui():
 	super()
@@ -65,13 +64,37 @@ func change_weapon(direction: int) -> void:
 	select_weapon(WEAPON_SLOTS[selected_index], selected_color)
 	
 func select_weapon(slot: WeaponSlot, color: Color):
-	#if Global && Global.GetPlayer() && slot.weapon_type:
 	Global.GetPlayer().switch_weapon(slot.weapon_type)
 	slot.weapon_slot.modulate = color
 	slot.bSelected = true
 	
+func deselect_weapon(slot: WeaponSlot, color: Color):
+	Global.GetPlayer().selected_weapon.set_sprite_visibility(false)
+	Global.GetPlayer().selected_weapon = null
+	slot.weapon_slot.modulate = color
+	slot.bSelected = false
+	
 # Adds weapon to slots
 func add_weapon(type: Global.Gun_Types):
+	var bAdd_weapon: bool = true
+	
+	# Bit jank putting it here but basically search through all slots and see if we
+	# tried to pick up an existing weapon and give ammo instead of picking it up (no dups here bud).
+	for slot in WEAPON_SLOTS:
+		if !slot.bFilled:
+			continue
+		
+		# If we found existing weapon, set the ammo to max for that weapon.
+		if slot.weapon_type == type:
+			var weapon_found = Global.GetPlayer().weapon_map.get(type)
+			weapon_found.current_ammo = weapon_found.max_ammo
+			bAdd_weapon = false
+			break
+	
+	# Don't give them a weapon if we already gave them bloody ammo.
+	if !bAdd_weapon:
+		return	
+	
 	for slot in WEAPON_SLOTS:
 		if slot.bFilled:
 			continue
@@ -83,5 +106,13 @@ func add_weapon(type: Global.Gun_Types):
 			
 		if(slot.bSelected):
 			select_weapon(slot, selected_color)
+		break
+		
+func remove_weapon(type: Global.Gun_Types):
+	for slot in WEAPON_SLOTS:
+		if !slot.weapon_type != type:
+			continue
+		slot.remove_weapon_from_slot(type, str(type))
+		deselect_weapon(slot, initial_color)
 		break
 		

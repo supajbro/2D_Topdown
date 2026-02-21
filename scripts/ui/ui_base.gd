@@ -7,6 +7,9 @@ extends Control
 func _ready():
 	if icon_node and icon:
 		icon_node.texture = icon
+		
+func _process(delta: float) -> void:
+	pass
 
 func show_ui():
 	visible = true

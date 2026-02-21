@@ -15,7 +15,7 @@ var time_since_last_shot: 		float 				= 0
 @export var shoot_position: 	Node2D
 
 var current_ammo: 				int  				= 0
-var max_ammo: 					int 				= -1
+@export var max_ammo: 			int 				= -1
 
 func _ready():
 	current_ammo = max_ammo
@@ -28,7 +28,10 @@ func _process(delta: float) -> void:
 func shoot(pos: Vector2):
 	if(time_since_last_shot < fire_rate):
 		return
-		
+	
+	if current_ammo <= 0:
+		return
+	
 	time_since_last_shot = 0
 	bullet_instance = bullet_scene.instantiate()
 	
@@ -41,11 +44,13 @@ func shoot(pos: Vector2):
 	
 	# Decrease ammunition
 	current_ammo -= 1
-	print("Ammo: ", current_ammo)
 	
 # The gun sprite will follow the mouse around a circle around the player
 func follow_mouse():
 	if gun_sprite == null:
+		return
+		
+	if Global.GetPlayer() == null:
 		return
 	
 	var mouse_pos = get_global_mouse_position()

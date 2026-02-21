@@ -145,6 +145,9 @@ func spawn_weapons():
 	add_child(rocket_launcher_instance)
 
 func shoot(delta: float):
+	if selected_weapon != null && selected_weapon.current_ammo <= 0 && selected_weapon.max_ammo != -1:
+		Global.weapon_slots.remove_weapon(selected_weapon.gun_type)
+	
 	if Input.is_action_pressed("Shoot"):
 		if selected_weapon:
 			selected_weapon.shoot(global_position)
@@ -162,6 +165,7 @@ func switch_weapon(type: Global.Gun_Types):
 		
 	selected_weapon = weapon_map.get(type)
 	selected_weapon.set_sprite_visibility(true)
+	UI.show_screen(UI.SCREENS["UI_AMMO_COUNT"])
 
 # -------------------------
 # HEALTH FUNCTIONS

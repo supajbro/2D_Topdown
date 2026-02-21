@@ -8,6 +8,7 @@ const SCREENS = {
 	"UI_WAVE_COMPLETE": "ui_wave_complete",
 	"UI_PLAYER_HEALTH": "ui_player_health",
 	"UI_WEAPON_SLOTS": "ui_weapon_slots",
+	"UI_AMMO_COUNT": "ui_ammo_count",
 	"PAUSE_MENU": "pause_menu",
 	"HUD": "hud"
 }
@@ -15,12 +16,9 @@ const SCREENS = {
 func _ready():
 	print("Screens:", screens)
 	print("Screens children:", screens.get_children())
-
 	hide_all()
 	
 func show_screen(name: String):
-	#hide_all()
-	
 	var screen := screens.get_node_or_null(name)
 	if screen is UIBase:
 		screen.visible = true

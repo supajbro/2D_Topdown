@@ -11,6 +11,7 @@ fire_rate = 2.0
 gun_distance = 10.0
 gun_sprite = NodePath("Sprite2D")
 shoot_position = NodePath("Sprite2D/shoot_position")
+max_ammo = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

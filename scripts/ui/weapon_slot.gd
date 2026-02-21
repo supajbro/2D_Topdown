@@ -13,3 +13,8 @@ func add_weapon_to_slot(type: Global.Gun_Types, name: String, _active: bool = fa
 	weapon_type = type
 	label.text 	= name
 	bFilled 	= _active
+	
+func remove_weapon_from_slot(type: Global.Gun_Types, name: String):
+	weapon_type = Global.Gun_Types.INVALID_TYPE
+	label.text 	= ""
+	bFilled 	= false
