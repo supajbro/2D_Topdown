@@ -1,19 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk42sijbtrt0v"]
+[gd_scene load_steps=7 format=3 uid="uid://dk42sijbtrt0v"]
 
 [ext_resource type="Script" uid="uid://c6aiwib306j74" path="res://scripts/guns/weapon_pickup/weapon_pickup.gd" id="1_6t02g"]
+[ext_resource type="Texture2D" uid="uid://qxls3efwdwbg" path="res://assets/topdown/pistol.png" id="2_tolqw"]
+[ext_resource type="Texture2D" uid="uid://c334h08bo5sap" path="res://assets/topdown/shotgun.png" id="3_lfhif"]
+[ext_resource type="Texture2D" uid="uid://80f2ejskhpri" path="res://assets/free-guns-pixel-art/free-guns-pixel-art/Assaut-rifle-2.png" id="4_qnlu6"]
+[ext_resource type="Texture2D" uid="uid://dwadnsnwpgegc" path="res://assets/free-guns-pixel-art/free-guns-pixel-art/Sniper-rifle-4.png" id="5_lfhif"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dkhbd"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_ciapp"]
-
-[node name="weapon_pickup" type="Area2D"]
+[node name="weapon_pickup" type="Area2D" node_paths=PackedStringArray("pistol_sprite", "shotgun_sprite", "machine_gun_sprite", "rocket_launcher_sprite")]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_6t02g")
+pistol_sprite = NodePath("pistol")
+shotgun_sprite = NodePath("shotgun")
+machine_gun_sprite = NodePath("machine_gun")
+rocket_launcher_sprite = NodePath("rocket_launcher")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dkhbd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
-texture = SubResource("CanvasTexture_ciapp")
+[node name="pistol" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tolqw")
+
+[node name="shotgun" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_lfhif")
+
+[node name="machine_gun" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_qnlu6")
+
+[node name="rocket_launcher" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_lfhif")

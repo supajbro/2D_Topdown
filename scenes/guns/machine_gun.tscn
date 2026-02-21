@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmh5icywv6dpu" path="res://scripts/guns/gun.gd" id="1_6vd8m"]
 [ext_resource type="PackedScene" uid="uid://c1rdqq4res3nn" path="res://scenes/bullets/players/machine_gun_bullet.tscn" id="2_6vd8m"]
-[ext_resource type="Texture2D" uid="uid://clm6kkna3hlbb" path="res://assets/craftpix-net-177646-free-guns-icon-32x32-pixel-pack/1 Icons/Icon29_01.png" id="3_l657o"]
+[ext_resource type="Texture2D" uid="uid://80f2ejskhpri" path="res://assets/free-guns-pixel-art/free-guns-pixel-art/Assaut-rifle-2.png" id="3_l657o"]
 
 [node name="machine_gun" type="Node2D" node_paths=PackedStringArray("gun_sprite", "shoot_position")]
 script = ExtResource("1_6vd8m")
@@ -19,4 +19,4 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_l657o")
 
 [node name="shoot_position" type="Node2D" parent="Sprite2D"]
-position = Vector2(14, -16)
+position = Vector2(32, -4)

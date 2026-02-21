@@ -10,6 +10,8 @@ var bullet_instance_3: bullet = null
 func shoot(pos: Vector2):
 	if(time_since_last_shot < fire_rate):
 		return
+	if current_ammo <= 0:
+		return
 	time_since_last_shot = 0
 	
 	var spawns = [spawn_left, spawn_middle, spawn_right]
@@ -18,3 +20,5 @@ func shoot(pos: Vector2):
 		bullet.global_position = spawn.global_position
 		get_tree().current_scene.add_child(bullet)
 	Global.GetCamera().start_zoom_out(gun_type)
+	
+	current_ammo -= 1

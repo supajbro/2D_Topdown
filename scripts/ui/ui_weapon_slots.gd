@@ -106,11 +106,14 @@ func add_weapon(type: Global.Gun_Types):
 			
 		if(slot.bSelected):
 			select_weapon(slot, selected_color)
+			
+			# Max sure when a weapon is picked up - we have max ammo.
+			Global.GetPlayer().selected_weapon.current_ammo = Global.GetPlayer().selected_weapon.max_ammo
 		break
 		
 func remove_weapon(type: Global.Gun_Types):
 	for slot in WEAPON_SLOTS:
-		if !slot.weapon_type != type:
+		if slot.weapon_type != type:
 			continue
 		slot.remove_weapon_from_slot(type, str(type))
 		deselect_weapon(slot, initial_color)

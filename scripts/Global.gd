@@ -51,6 +51,11 @@ func get_random_gun() -> Gun_Types:
 
 	return Gun_Types.INVALID_TYPE
 
+@export_range(0, 100) var gun_drop_chance := 50
+
+func enemy_should_drop_gun() -> bool:
+	return rng.randf() * 100.0 < gun_drop_chance
+
 
 # -------------------------
 # GLOBAL RNG

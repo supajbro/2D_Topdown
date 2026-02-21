@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cwv7g86kpr7ia"]
 
-[ext_resource type="PackedScene" uid="uid://xa3dywrdag0p" path="res://scenes/game_manager.tscn" id="1_61jgc"]
+[ext_resource type="PackedScene" uid="uid://xa3dywrdag0p" path="res://scenes/managers/game_manager.tscn" id="1_61jgc"]
 [ext_resource type="Texture2D" uid="uid://dqhkrtmoq1kon" path="res://assets/temp/terrain_tiles_v2.png" id="2_riktp"]
-[ext_resource type="PackedScene" uid="uid://cna041jnqbbwy" path="res://scenes/enemy_spawner.tscn" id="3_a1osm"]
+[ext_resource type="PackedScene" uid="uid://cna041jnqbbwy" path="res://scenes/enemy/enemy_spawner.tscn" id="3_a1osm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_riktp")

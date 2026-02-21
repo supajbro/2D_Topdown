@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://bmh5icywv6dpu" path="res://scripts/guns/gun.gd" id="1_r3071"]
 [ext_resource type="PackedScene" uid="uid://wnmhkvkqnq5d" path="res://scenes/bullets/players/pistol_bullet.tscn" id="2_60a84"]
-[ext_resource type="Texture2D" uid="uid://cxdxda18vuty8" path="res://assets/craftpix-net-177646-free-guns-icon-32x32-pixel-pack/1 Icons/Icon29_40.png" id="3_heljo"]
+[ext_resource type="Texture2D" uid="uid://qxls3efwdwbg" path="res://assets/topdown/pistol.png" id="3_heljo"]
 
 [node name="pistol" type="Node2D" node_paths=PackedStringArray("gun_sprite", "shoot_position")]
+rotation = 1.5707964
 script = ExtResource("1_r3071")
 bullet_scene = ExtResource("2_60a84")
 fire_rate = 0.75
@@ -18,4 +19,4 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_heljo")
 
 [node name="shoot_position" type="Node2D" parent="Sprite2D"]
-position = Vector2(14, -16)
+position = Vector2(-6.119594e-07, -14)
