@@ -156,7 +156,6 @@ func switch_weapon(type: Global.Gun_Types):
 		return
 	selected_weapon = weapon_map.get(type)
 
-
 # -------------------------
 # HEALTH FUNCTIONS
 # -------------------------
