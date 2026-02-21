@@ -2,14 +2,20 @@
 
 [ext_resource type="Script" uid="uid://bmh5icywv6dpu" path="res://scripts/guns/gun.gd" id="1_6vd8m"]
 [ext_resource type="PackedScene" uid="uid://c1rdqq4res3nn" path="res://scenes/bullets/players/machine_gun_bullet.tscn" id="2_6vd8m"]
+[ext_resource type="Texture2D" uid="uid://clm6kkna3hlbb" path="res://assets/craftpix-net-177646-free-guns-icon-32x32-pixel-pack/1 Icons/Icon29_01.png" id="3_l657o"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_46jcc"]
-
-[node name="machine_gun" type="Node2D"]
+[node name="machine_gun" type="Node2D" node_paths=PackedStringArray("gun_sprite", "shoot_position")]
 script = ExtResource("1_6vd8m")
 gun_type = 1
 bullet_scene = ExtResource("2_6vd8m")
 fire_rate = 0.05
+gun_sprite = NodePath("Sprite2D")
+shoot_position = NodePath("Sprite2D/shoot_position")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("CanvasTexture_46jcc")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_l657o")
+offset = Vector2(0, -25)
+
+[node name="shoot_position" type="Node2D" parent="Sprite2D"]
+position = Vector2(14, -40)

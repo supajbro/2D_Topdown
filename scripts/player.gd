@@ -154,7 +154,14 @@ func shoot(delta: float):
 func switch_weapon(type: Global.Gun_Types):
 	if type == Global.Gun_Types.INVALID_TYPE:
 		return
+	
+	# Uninit previously selected weapon.
+	if selected_weapon != null:
+		selected_weapon.set_sprite_visibility(false)
+		selected_weapon = null
+		
 	selected_weapon = weapon_map.get(type)
+	selected_weapon.set_sprite_visibility(true)
 
 # -------------------------
 # HEALTH FUNCTIONS
