@@ -52,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			change_weapon(1)
 
 func change_weapon(direction: int) -> void:
-	select_weapon(WEAPON_SLOTS[selected_index], initial_color)
+	var previous_select_index = selected_index
 
 	selected_index += direction
 
@@ -60,8 +60,24 @@ func change_weapon(direction: int) -> void:
 		selected_index = WEAPON_SLOTS.size() - 1
 	elif selected_index >= WEAPON_SLOTS.size():
 		selected_index = 0
-
-	select_weapon(WEAPON_SLOTS[selected_index], selected_color)
+	
+	# Make sure next selected slot has a weapon filled.
+	var current_attempts = 0
+	while !WEAPON_SLOTS[selected_index].bFilled && current_attempts < 3:
+		selected_index += direction
+		if selected_index < 0:
+			selected_index = WEAPON_SLOTS.size() - 1
+		elif selected_index >= WEAPON_SLOTS.size():
+			selected_index = 0
+		current_attempts += 1
+	
+	var bChange_selected = false
+	if WEAPON_SLOTS[selected_index].bFilled:
+		bChange_selected = true
+		
+	if bChange_selected:
+		select_weapon(WEAPON_SLOTS[previous_select_index], initial_color)
+		select_weapon(WEAPON_SLOTS[selected_index], selected_color)
 	
 func select_weapon(slot: WeaponSlot, color: Color):
 	Global.GetPlayer().switch_weapon(slot.weapon_type)
