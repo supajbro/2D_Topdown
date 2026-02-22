@@ -139,4 +139,6 @@ func remove_weapon(type: Global.Gun_Types):
 		
 		deselect_weapon(slot, initial_color)
 		break
+	# Select the next available slot in the index.
+	change_weapon(1)
 		
