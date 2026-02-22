@@ -127,6 +127,7 @@ func spawn_health_pickup():
 		
 func drop_weapon():
 	if Global.enemy_should_drop_gun:
-		var weapon_drop = weapon_pickup.instantiate()
+		var weapon_drop = weapon_pickup.instantiate() as weapon_pickup
 		weapon_drop.global_position = global_position
+		weapon_drop.init()
 		get_parent().add_child(weapon_drop)

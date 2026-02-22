@@ -9,6 +9,8 @@ extends UIBase
 @export var weapon_slot_02_label: Label
 @export var weapon_slot_03_label: Label
 
+@export var weapon_pickup: PackedScene
+
 var WEAPON_SLOTS = [
 		WeaponSlot.new(),
 		WeaponSlot.new(),
@@ -50,6 +52,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			change_weapon(-1)
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			change_weapon(1)
+			
+	if Input.is_action_pressed("DropWeapon"):
+		if Global.GetPlayer() != null && Global.GetPlayer().selected_weapon != null:
+			spawn_weapon_on_drop()
+			remove_weapon(Global.GetPlayer().selected_weapon.gun_type)
+	
 
 func change_weapon(direction: int) -> void:
 	var previous_select_index = selected_index
@@ -141,4 +149,11 @@ func remove_weapon(type: Global.Gun_Types):
 		break
 	# Select the next available slot in the index.
 	change_weapon(1)
+
+# When player manually drops when put it back on the map.
+func spawn_weapon_on_drop():
+	var weapon_drop = weapon_pickup.instantiate() as weapon_pickup
+	weapon_drop.global_position = Global.GetPlayer().global_position
+	weapon_drop.override_init(Global.GetPlayer().selected_weapon.gun_type)
+	get_tree().current_scene.add_child(weapon_drop)
 		

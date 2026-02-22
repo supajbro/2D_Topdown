@@ -16,6 +16,7 @@ pistol_sprite = NodePath("pistol")
 shotgun_sprite = NodePath("shotgun")
 machine_gun_sprite = NodePath("machine_gun")
 rocket_launcher_sprite = NodePath("rocket_launcher")
+max_collect_timer = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dkhbd")
