@@ -76,7 +76,7 @@ func change_weapon(direction: int) -> void:
 		bChange_selected = true
 		
 	if bChange_selected:
-		select_weapon(WEAPON_SLOTS[previous_select_index], initial_color)
+		deselect_weapon(WEAPON_SLOTS[previous_select_index], initial_color)
 		select_weapon(WEAPON_SLOTS[selected_index], selected_color)
 	
 func select_weapon(slot: WeaponSlot, color: Color):
@@ -85,8 +85,6 @@ func select_weapon(slot: WeaponSlot, color: Color):
 	slot.bSelected = true
 	
 func deselect_weapon(slot: WeaponSlot, color: Color):
-	Global.GetPlayer().selected_weapon.set_sprite_visibility(false)
-	Global.GetPlayer().selected_weapon = null
 	slot.weapon_slot.modulate = color
 	slot.bSelected = false
 	
@@ -119,12 +117,13 @@ func add_weapon(type: Global.Gun_Types):
 		# If player has no weapons, auto assign the initial one.
 		if Global.GetPlayer().selected_weapon == null:
 			Global.GetPlayer().switch_weapon(slot.weapon_type)
-			
+		
+		# Max sure when a weapon is picked up - we have max ammo.
+		var weapon_found = Global.GetPlayer().weapon_map.get(type)
+		weapon_found.current_ammo = weapon_found.max_ammo
+		
 		if(slot.bSelected):
 			select_weapon(slot, selected_color)
-			
-			# Max sure when a weapon is picked up - we have max ammo.
-			Global.GetPlayer().selected_weapon.current_ammo = Global.GetPlayer().selected_weapon.max_ammo
 		break
 		
 func remove_weapon(type: Global.Gun_Types):
@@ -132,6 +131,12 @@ func remove_weapon(type: Global.Gun_Types):
 		if slot.weapon_type != type:
 			continue
 		slot.remove_weapon_from_slot(type, str(type))
+		
+		# Make sure player no longer has access to this weapon.
+		if Global.GetPlayer() != null && Global.GetPlayer().selected_weapon != null:
+			Global.GetPlayer().selected_weapon.set_sprite_visibility(false)
+			Global.GetPlayer().selected_weapon = null
+		
 		deselect_weapon(slot, initial_color)
 		break
 		

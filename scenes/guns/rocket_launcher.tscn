@@ -6,6 +6,7 @@
 
 [node name="rocket_launcher" type="Node2D" node_paths=PackedStringArray("gun_sprite", "shoot_position")]
 script = ExtResource("1_rxsom")
+gun_type = 3
 bullet_scene = ExtResource("2_2ij06")
 fire_rate = 2.0
 gun_distance = 10.0
