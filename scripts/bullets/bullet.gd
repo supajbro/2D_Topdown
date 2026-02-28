@@ -19,11 +19,11 @@ var direction: Vector2 = Vector2.ZERO
 func _ready():
 	if(is_enemy_bullet):
 		direction = (Global.player.global_position - global_position).normalized()
-	else:
-		direction = (get_global_mouse_position() - global_position).normalized()
-		Global.GetCamera().add_shake(-direction, gun_type)
-		
 	connect("body_entered", Callable(self, "_on_body_entered"))
+	
+func player_bullet_init(pos: Vector2):
+	direction = (pos).normalized()
+	Global.GetCamera().add_shake(-direction, gun_type)
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta
