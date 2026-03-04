@@ -21,8 +21,8 @@ func _process(delta: float) -> void:
 	lifetime += delta
 	
 	# Remove weapon pickup after max lifetime is reached.
-	if lifetime >= max_lifetime:
-		queue_free()
+	#if lifetime >= max_lifetime:
+	#	queue_free()
 
 func init_gun_sprites():
 	gun_sprites = {

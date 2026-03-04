@@ -41,7 +41,7 @@ func init_weapon_slots():
 	for slot in WEAPON_SLOTS:
 		slot.weapon_slot.modulate = initial_color
 		slot.weapon_type = Global.Gun_Types.INVALID_TYPE
-	WEAPON_SLOTS[0].weapon_slot.modulate = selected_color
+	#WEAPON_SLOTS[0].weapon_slot.modulate = selected_color
 	
 func show_ui():
 	super()
@@ -128,9 +128,17 @@ func add_weapon(type: Global.Gun_Types, ammo: int):
 		
 		# Max sure when a weapon is picked up - we have max ammo.
 		var weapon_found = Global.GetPlayer().weapon_map.get(type)
-		weapon_found.current_ammo = clamp(ammo, weapon_found.current_ammo + ammo, weapon_found.max_ammo)
+		weapon_found.current_ammo = ammo
 		
-		if(slot.bSelected):
+		var bAll_slots_empty: bool = true
+		for other_slot in WEAPON_SLOTS:
+			if other_slot == slot:
+				continue
+			if other_slot.bSelected == true:
+				bAll_slots_empty = false
+				break
+		
+		if(bAll_slots_empty):
 			select_weapon(slot, selected_color)
 		break
 		
