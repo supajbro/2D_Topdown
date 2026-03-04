@@ -97,7 +97,7 @@ func deselect_weapon(slot: WeaponSlot, color: Color):
 	slot.bSelected = false
 	
 # Adds weapon to slots
-func add_weapon(type: Global.Gun_Types):
+func add_weapon(type: Global.Gun_Types, ammo: int):
 	var bAdd_weapon: bool = true
 	
 	# Bit jank putting it here but basically search through all slots and see if we
@@ -109,7 +109,7 @@ func add_weapon(type: Global.Gun_Types):
 		# If we found existing weapon, set the ammo to max for that weapon.
 		if slot.weapon_type == type:
 			var weapon_found = Global.GetPlayer().weapon_map.get(type)
-			weapon_found.current_ammo = weapon_found.max_ammo
+			weapon_found.current_ammo = clamp(ammo, weapon_found.current_ammo + ammo, weapon_found.max_ammo)
 			bAdd_weapon = false
 			break
 	
@@ -128,7 +128,7 @@ func add_weapon(type: Global.Gun_Types):
 		
 		# Max sure when a weapon is picked up - we have max ammo.
 		var weapon_found = Global.GetPlayer().weapon_map.get(type)
-		weapon_found.current_ammo = weapon_found.max_ammo
+		weapon_found.current_ammo = clamp(ammo, weapon_found.current_ammo + ammo, weapon_found.max_ammo)
 		
 		if(slot.bSelected):
 			select_weapon(slot, selected_color)
@@ -154,6 +154,6 @@ func remove_weapon(type: Global.Gun_Types):
 func spawn_weapon_on_drop():
 	var weapon_drop = weapon_pickup.instantiate() as weapon_pickup
 	weapon_drop.global_position = Global.GetPlayer().global_position
-	weapon_drop.override_init(Global.GetPlayer().selected_weapon.gun_type)
+	weapon_drop.init_drop_weapon(Global.GetPlayer().selected_weapon.gun_type, Global.GetPlayer().selected_weapon.current_ammo)
 	get_tree().current_scene.add_child(weapon_drop)
 		
