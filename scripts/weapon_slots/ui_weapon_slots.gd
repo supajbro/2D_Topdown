@@ -1,21 +1,14 @@
 class_name weapon_slots
 extends UIBase
 
-@export var weapon_slot_01: TextureRect
-@export var weapon_slot_02: TextureRect
-@export var weapon_slot_03: TextureRect
-
-@export var weapon_slot_01_label: Label
-@export var weapon_slot_02_label: Label
-@export var weapon_slot_03_label: Label
-
+# Holding a reference to weapon pickup so we can control dropping weapons here.
 @export var weapon_pickup: PackedScene
 
-var WEAPON_SLOTS = [
-		WeaponSlot.new(),
-		WeaponSlot.new(),
-		WeaponSlot.new()
-	]
+@export var container: HBoxContainer
+
+var WEAPON_SLOTS: Array[TextureRect] = []
+@export var weapon_slot: PackedScene
+const MAX_SLOT_COUNT: int = 3
 
 @export var initial_color: 	Color = Color.BLACK
 @export var selected_color: Color = Color.YELLOW
@@ -29,16 +22,14 @@ func _ready():
 func init_weapon_slots():
 	Global.weapon_slots = self
 	
-	WEAPON_SLOTS[0].weapon_slot = weapon_slot_01
-	WEAPON_SLOTS[1].weapon_slot = weapon_slot_02
-	WEAPON_SLOTS[2].weapon_slot = weapon_slot_03
-	
-	WEAPON_SLOTS[0].label 		= weapon_slot_01_label
-	WEAPON_SLOTS[1].label 		= weapon_slot_02_label
-	WEAPON_SLOTS[2].label 		= weapon_slot_03_label
+	for i in MAX_SLOT_COUNT:
+		var slot = weapon_slot.instantiate()
+		container.add_child(slot)
+		WEAPON_SLOTS.append(slot)
 	
 	# set the initial unselected color & initial selected weapon slot
 	for slot in WEAPON_SLOTS:
+		slot.weapon_slot_init()
 		slot.weapon_slot.modulate = initial_color
 		slot.weapon_type = Global.Gun_Types.INVALID_TYPE
 	#WEAPON_SLOTS[0].weapon_slot.modulate = selected_color

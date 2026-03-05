@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpl8i8kfcrjdf"]
+
+[ext_resource type="Texture2D" uid="uid://j1uh1y73a7ws" path="res://assets/UI/sqaure_outline.png" id="1_mrsoj"]
+[ext_resource type="Script" uid="uid://b1kiebj52sm5" path="res://scripts/weapon_slots/weapon_slot.gd" id="2_ohg11"]
+[ext_resource type="Texture2D" uid="uid://qxls3efwdwbg" path="res://assets/topdown/pistol.png" id="3_x4xns"]
+[ext_resource type="Texture2D" uid="uid://c334h08bo5sap" path="res://assets/topdown/shotgun.png" id="4_vh72a"]
+[ext_resource type="Texture2D" uid="uid://cr6pn1l62gkhg" path="res://assets/free-guns-pixel-art/free-guns-pixel-art/Assaut-rifle-3.png" id="5_26ml2"]
+[ext_resource type="Texture2D" uid="uid://bqggrdpcrq403" path="res://assets/free-guns-pixel-art/free-guns-pixel-art/grenade launcher.png" id="6_4oqxy"]
+
+[node name="WeaponSlot" type="TextureRect" node_paths=PackedStringArray("weapon_slot", "weapon_slot_pistol", "weapon_slot_shotgun", "weapon_slot_machine_gun", "weapon_slot_rocket_launcher")]
+texture = ExtResource("1_mrsoj")
+script = ExtResource("2_ohg11")
+weapon_slot = NodePath(".")
+weapon_slot_pistol = NodePath("pistol_texture")
+weapon_slot_shotgun = NodePath("shotgun_texture")
+weapon_slot_machine_gun = NodePath("machine_gun_texture")
+weapon_slot_rocket_launcher = NodePath("rocket_launcher_texture")
+
+[node name="pistol_texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x4xns")
+
+[node name="shotgun_texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_vh72a")
+
+[node name="machine_gun_texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_26ml2")
+
+[node name="rocket_launcher_texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_4oqxy")

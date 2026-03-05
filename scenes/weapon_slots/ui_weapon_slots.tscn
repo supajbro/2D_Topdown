@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs13cyfxf8x51"]
+
+[ext_resource type="Script" uid="uid://25o824yr78ua" path="res://scripts/weapon_slots/ui_weapon_slots.gd" id="1_66jqg"]
+[ext_resource type="PackedScene" uid="uid://dk42sijbtrt0v" path="res://scenes/weapon_slots/weapon_pickups/weapon_pickup.tscn" id="2_voaoh"]
+[ext_resource type="PackedScene" uid="uid://dpl8i8kfcrjdf" path="res://scenes/weapon_slots/weapon_slot.tscn" id="3_ad764"]
+
+[node name="ui_weapon_slots" type="Control" node_paths=PackedStringArray("container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_66jqg")
+weapon_pickup = ExtResource("2_voaoh")
+container = NodePath("HBoxContainer")
+weapon_slot = ExtResource("3_ad764")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 945.0
+offset_top = 577.0
+grow_horizontal = 2
+grow_vertical = 2
