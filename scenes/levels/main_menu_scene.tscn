@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyec33ytcvy3o"]
+
+[ext_resource type="Script" uid="uid://dyky8ahbrsigv" path="res://scripts/managers/main_menu_manager.gd" id="1_kbrfq"]
+
+[node name="main_menu_scene" type="Node2D" node_paths=PackedStringArray("play_game_button", "level_select_button")]
+script = ExtResource("1_kbrfq")
+play_game_button = NodePath("CanvasLayer/Control/VBoxContainer/button_play_game")
+level_select_button = NodePath("CanvasLayer/Control/VBoxContainer/button_level_select")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Entered main menu scene"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -43.0
+offset_right = 125.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="button_play_game" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Play Game"
+
+[node name="button_level_select" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Level Select"

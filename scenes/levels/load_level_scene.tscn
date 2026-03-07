@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://deihfhwghwti7"]
+[gd_scene format=3 uid="uid://bmt8cfn1vquw0"]
 
 [node name="startup_scene" type="Node2D"]
 
@@ -19,4 +19,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Entered startup scene"
+text = "Entered load level scene"

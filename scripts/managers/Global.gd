@@ -1,5 +1,7 @@
 extends Node
 
+var loaded_level: PackedScene
+
 var player: player = null
 var cam: player_camera = null
 var enemy_spawner: enemy_spawner = null

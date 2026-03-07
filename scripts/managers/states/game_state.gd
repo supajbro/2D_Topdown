@@ -2,6 +2,7 @@ class_name State
 extends Node
 
 var manager
+@export var state_scene: PackedScene
 
 func enter():
 	pass
