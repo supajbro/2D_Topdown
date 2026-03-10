@@ -1,20 +1,18 @@
 extends State
 
-var pause_scene: PackedScene
+var pause_scene: 	PackedScene
 var pause_instance: Node
 
-var level_to_load := "res://scenes/levels/pause_scene.tscn"
-var loading_started := false
-var loading_finished := false
+var level_to_load 		:= "res://scenes/levels/pause_scene.tscn"
+var loading_started 	:= false
+var loading_finished 	:= false
 
 func enter():
 	super.enter()
 	print("Entered Pause State")
 
-	# If already loaded, just show it
-	if loading_finished and pause_instance:
-		pause_instance.visible = true
-		return
+	loading_started = false
+	loading_finished = false
 
 	# First time pause is opened
 	if !loading_started:
@@ -40,7 +38,7 @@ func update(delta):
 		pause_scene = ResourceLoader.load_threaded_get(level_to_load)
 
 		pause_instance = pause_scene.instantiate()
-		get_tree().current_scene.add_child(pause_instance)
+		get_tree().root.add_child(pause_instance)
 
 		loading_finished = true
 		pause_instance.show()

@@ -26,6 +26,9 @@ func _ready():
 	current_health = max_health
 	
 func _physics_process(delta):
+	if GameStateManager.current_state != GameplayState:
+		return
+	
 	match current_state:
 		"idle":
 			_idle_state(delta)

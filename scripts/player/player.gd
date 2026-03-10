@@ -41,6 +41,9 @@ func _on_ready() -> void:
 	init()
 	
 func _physics_process(delta: float) -> void:
+	if GameStateManager.current_state != GameplayState:
+		return
+	
 	# Control movement
 	velocity = Vector2.ZERO
 	

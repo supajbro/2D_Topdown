@@ -22,6 +22,9 @@ func _ready():
 	set_sprite_visibility(false)
 
 func _process(delta: float) -> void:
+	if GameStateManager.current_state != GameplayState:
+		return
+	
 	time_since_last_shot += delta
 	
 	if gun_sprite != null:

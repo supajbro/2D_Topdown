@@ -26,6 +26,9 @@ func player_bullet_init(pos: Vector2):
 	Global.GetCamera().add_shake(-direction, gun_type)
 
 func _process(delta: float) -> void:
+	if GameStateManager.current_state != GameplayState:
+		return
+	
 	position += direction * speed * delta
 	
 	# Destroy once bullets lifetime has been hit
