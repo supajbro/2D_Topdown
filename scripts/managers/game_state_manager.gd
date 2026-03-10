@@ -1,6 +1,7 @@
 extends Node
 
-var current_state : State
+var current_state 	: State
+var previous_state 	: State
 
 # Set the initial state
 func _ready():
@@ -10,6 +11,10 @@ func _ready():
 func _process(delta: float) -> void:
 	if current_state != null:
 		current_state.update(delta)
+		
+func _input(event):
+	if current_state:
+		current_state.handle_input(event)
 
 func change_state(new_state: State):
 	if current_state == new_state:
@@ -18,8 +23,9 @@ func change_state(new_state: State):
 	# Exit state if there was a previous state.
 	if current_state:
 		exit_state(current_state)
-		
-	current_state = new_state
+	
+	previous_state 	= current_state
+	current_state 	= new_state
 	enter_state(current_state)
 	
 func enter_state(state: State):

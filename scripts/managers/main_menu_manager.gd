@@ -6,6 +6,8 @@ extends Node
 
 func _ready():
 	play_game_button.pressed.connect(_on_play_pressed)
+	level_select_button.pressed.connect(_on_level_select_pressed)
+	quit_game_button.pressed.connect(_on_quit_pressed)
 
 func _on_play_pressed():
 	GameStateManager.change_state(LoadLevelState)

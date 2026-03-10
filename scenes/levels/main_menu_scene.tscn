@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dyky8ahbrsigv" path="res://scripts/managers/main_menu_manager.gd" id="1_kbrfq"]
 
-[node name="main_menu_scene" type="Node2D" node_paths=PackedStringArray("play_game_button", "level_select_button")]
+[node name="main_menu_scene" type="Node2D" node_paths=PackedStringArray("play_game_button", "level_select_button", "quit_game_button")]
 script = ExtResource("1_kbrfq")
 play_game_button = NodePath("CanvasLayer/Control/VBoxContainer/button_play_game")
 level_select_button = NodePath("CanvasLayer/Control/VBoxContainer/button_level_select")
+quit_game_button = NodePath("CanvasLayer/Control/VBoxContainer/button_quit_game")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -49,3 +50,7 @@ text = "Play Game"
 [node name="button_level_select" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Level Select"
+
+[node name="button_quit_game" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"

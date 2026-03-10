@@ -1,6 +1,7 @@
 extends State
 
-# TODO: This will need to change to remember level we are up to
+# TODO: This will need to change to remember level we are up to.
+#		Could look at moving this to a load level manager class to remember what level to load.
 var level_to_load: String = "res://scenes/levels/test_enemy_pathfinding.tscn"
 var loading_started := false
 
